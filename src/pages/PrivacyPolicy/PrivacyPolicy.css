@@ -1,0 +1,17 @@
+.privacyPolicy{
+    background-color: white;
+    padding: 5% 4%;
+    margin: 6% 11%;
+    box-shadow: 0 25px 32px rgba(38, 2, 2, 0.5);
+}
+
+#H1privacy{
+    text-align: center;
+}
+.text1{
+    padding:0% 6%  ;
+    overflow-wrap: break-word;
+}
+#pprivacy{
+    padding: 2% 6%;
+}

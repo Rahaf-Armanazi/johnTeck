@@ -1,0 +1,147 @@
+.Showcard{
+    height: 300px;
+    width: auto;
+    margin-bottom: 1%;
+    padding: 0% 3%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgba(218, 227, 243);}
+
+.Showcard .imageUser{
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(-10px 20px 5px rgba(11, 3, 3, 0.585));
+    object-fit: fill;
+    margin: 0% 0% 0% -7%;
+}
+ .Showcard .C1user{
+    background-color:  rgba(218, 227, 243);
+    width: 25%;
+    height: 70%;
+}
+
+.Showcard .productdetailsuser{    
+    width: 100%;
+    height: 80%;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+    margin-top: 0.2%;
+    margin-bottom: 0.2%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(38, 2, 2, 0.453);
+}
+
+.Showcard .productNameuser{
+    /* font-size: 25px; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 2% 0% 3% 0%;
+    align-items: center;
+    text-align: center;
+    font-size: 2.5vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.Showcard .PIuser{
+    width: 100%;
+    height:90% ;
+    margin-top: -20px;
+    align-items:center;
+    display: flex;
+    justify-content: space-around;
+}
+.Showcard .pdfuser{
+    width: 15%;
+    height: 51%;
+    margin-left: 2%;
+    margin-right: 12%;
+}
+.Showcard .productdeDescriptionuser{
+    width: 59%;
+    font-size: 2vw;
+    margin: 4% 2% 4% 2%;
+    padding: 6% 2% 6% 2%;
+    overflow-wrap: break-word;
+} 
+
+ .Showcard .C2user{
+    /* background-color: beige; */
+    height: 90%;
+    width: 74%;
+    max-width: 644px;
+}
+
+  .C2user .C3user{
+    width: 70%;
+    height: 20px;
+    overflow: hidden;
+    word-break: break-all;
+    padding: 0% 2% 10% 2%;
+    margin: 2% 0% 2% 16%;
+    font-size: calc(1rem + 0.5vw);
+ }
+
+ .C3user .linuser{
+    font-weight: bold;
+}
+
+@media (min-width:1200px) and (max-width: 1600px) {
+    .Showcard {
+        font-size: 1.5vw;  /* حجم النص بشكل متناسب */
+    }
+}
+
+/* للشاشات المتوسطة مثل الحواسيب المحمولة والتابلت */
+@media (max-width: 1200px) and (min-width: 769px) {
+    .Showcard {
+        font-size: 2.5vw;  /* حجم النص متناسب */
+    }
+}
+
+/* للشاشات الصغيرة مثل الهواتف الذكية */
+@media (max-width: 768px) and (min-width: 481px) {
+    .Showcard {
+        font-size: 3.5vw;
+    }
+}
+
+/* للشاشات الصغيرة جدًا (الهواتف الصغيرة جدًا) */
+@media (max-width: 480px) {
+    .Showcard {
+        font-size: 4.5vw;
+    }
+}
+
+@media (min-width:1200px) and (max-width: 1600px) {
+    .productdetailsuser {
+        font-size: 1.5vw;  /* حجم النص بشكل متناسب */
+    }
+}
+
+/* للشاشات المتوسطة مثل الحواسيب المحمولة والتابلت */
+@media (max-width: 1200px) and (min-width: 769px) {
+    .productdetailsuser {
+        font-size: 2.5vw;  /* حجم النص متناسب */
+    }
+}
+
+/* للشاشات الصغيرة مثل الهواتف الذكية */
+@media (max-width: 768px) and (min-width: 481px) {
+    .productdetailsuser {
+        font-size: 3.5vw;
+    }
+}
+
+/* للشاشات الصغيرة جدًا (الهواتف الصغيرة جدًا) */
+@media (max-width: 480px) {
+     .productdetailsuser {
+        font-size: 4.5vw;
+    }
+}

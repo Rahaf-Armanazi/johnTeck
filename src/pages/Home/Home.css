@@ -1,0 +1,59 @@
+.logo{
+    padding-left: 20%;
+    padding-top: 12%;
+    padding-bottom: 0%;
+    display: flex;
+}
+.name1{
+    margin-left: 3%;
+    margin-top: 3%;
+}
+.font-the-h{
+    margin-left: 30%;
+    margin-top: 3%;
+    font-size: xxx-large;
+    font-style: oblique;
+}
+.imgshome{
+    width: 80%;
+    margin: 0% 10%;
+    max-height: 500px;
+    box-shadow: 2px 0px 70px rgb(43 41 11);
+    border-radius: 14cap;
+}
+.half{
+    margin-left: 0;
+    border-top-left-radius: 14cap;
+    border-bottom-left-radius: 14cap;
+    max-height: 500px;
+    width: 50%;
+}
+.div222{
+    max-height: 500px;
+    display: flex;
+    border: 2px solid rgb(84, 188, 252);
+}
+.font_h-ener{
+    text-shadow: 3px 6px 5px #888888;
+    margin-left: 16%;
+    margin-top: 15%;
+    font-size: 40px;
+    font-style: oblique;
+}
+.btn1{
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 6%;
+    background-color: #e5e3c2;
+    font-size: 38px;
+    font-style: initial;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.btn1:hover {
+    background-color: #e0e0c0; /* تغيير لون الخلفية عند المرور */
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3); /* تكبير الظل عند التفاعل */
+  }

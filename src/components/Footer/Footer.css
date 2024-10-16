@@ -1,0 +1,26 @@
+.contentFooter {
+    background-color: rgb(189 204 216);
+    width: 100%;
+    /* position: relative; */
+}
+.allfooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2%;
+}
+.linkk {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.d1 {
+  line-height: 14px;
+  /* background-color: blue; */
+}
+.lastfooter {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.h3footer{
+    word-wrap:break-word ;
+}

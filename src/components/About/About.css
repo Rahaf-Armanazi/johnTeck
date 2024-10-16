@@ -1,0 +1,140 @@
+
+.aboutus {
+    background-color: rgba(240, 249, 255, 0.4);
+    width: 50%;
+    height: auto;
+    margin: 2% 4%;
+    margin-left:45% ;
+    padding: 2%;
+    border: none;
+    display: grid;
+    gap: 7px;
+    font-size: 2vw;
+  }
+  #H3 {
+    display: flex;
+    text-align: center;
+    font-weight: 900;
+  }
+  .text4 {
+    /* overflow-wrap: break-word; كسر الكلمة تلقائيًا عند الحاجة */
+    /* word-break: break-all;  */
+    overflow-wrap: break-word;
+    /* font-size: 16px; */
+  }
+  /* شاشات عريضة  */
+  @media (min-aspect-ratio: 3/2) {
+    #H3 {
+      font-size: 2.9vw;
+    }
+    .text4 {
+      font-size: 1.6vw;
+    }
+  }
+  
+  /*  ثغرورات*/
+  @media (min-width: 1440px) and (max-width: 1709px) and (min-height: 1080px) and (max-height: 1080px) {
+    #H3 {
+      font-size: 3.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 2.6vw;
+    }
+  }
+  @media (min-width: 810px) and (max-width: 1087px) and (min-height: 1080px) and (max-height: 1080px) {
+    #H3 {
+      font-size: 4.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 3.1vw;
+    }
+  }
+  @media (min-width: 1px) and (max-width: 570px) and (min-height: 1080px) and (max-height: 1080px) {
+    #H3 {
+      font-size: 6.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 5vw;
+    }
+  }
+  /* شاشات طويلة  */
+  @media (max-aspect-ratio: 3/4) {
+    #H3 {
+      font-size: 4vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 3.78vw;
+    }
+  }
+  @media (min-width: 1707px) and (max-width: 1846px) and (min-height: 1280px) and (max-height: 1280px) {
+    #H3 {
+      font-size: 4.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 1.9vw;
+    }
+  }
+  @media (min-width: 961px) and (max-width: 1279px) and (min-height: 1280px) and (max-height: 1280px) {
+    #H3 {
+      font-size: 4.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 3.1vw;
+    }
+  }
+  
+  @media (min-width: 1px) and (max-width: 649px) and (min-height: 1280px) and (max-height: 1280px) {
+    #H3 {
+      font-size: 6.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 5.6vw;
+    }
+  }
+  /* مربعة */
+  @media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) {
+    #H3 {
+      font-size: 3.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 2.6vw;
+    }
+  }
+  /*  ثغرورات */
+  @media (min-width: 1060px) and (max-width: 1130px) and (min-height: 800px) and (max-height: 800px) {
+    #H3 {
+      font-size: 4.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 2vw;
+    }
+  }
+  @media (min-width: 595px) and (max-width: 800px) and (min-height: 800px) and (max-height: 800px) {
+    #H3 {
+      font-size: 4.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 3vw;
+    }
+  }
+  
+  @media (min-width: 1px) and (max-width: 410px) and (min-height: 800px) and (max-height: 800px) {
+    #H3 {
+      font-size: 6.3vw;
+      font-weight: bolder;
+    }
+    .text4 {
+      font-size: 4.5vw;
+    }
+  }
+  
