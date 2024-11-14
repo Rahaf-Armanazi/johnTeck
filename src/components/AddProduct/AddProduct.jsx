@@ -9,20 +9,25 @@ import axios from "axios";
 
 Modal.setAppElement("#root");
 
-const AddProduct = (props) => {
+const AddProduct = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => setModalIsOpen(true);
   const closeModal =()=> setModalIsOpen(false);
   // عرض البيانات من الداتا
   const [productinfo, setproductInfo] = useState([]);
-  const getType = async () => {
-    const response = await axios.get("http://192.168.43.97:4784/AllProducts");
-    setproductInfo(response.data);
-  };
+  // const getType = async () => {
+  //   const response = await axios.get("http://192.168.137.29:4784/AllProducts");
+  //   setproductInfo(response.data);
+  // };
 
-  useEffect(() => {
-    getType();
-  }, []);
+  // useEffect(() => {
+  //   getType();
+  // }, []);
+
+  // دالة لإضافة المنتج الجديد إلى القائمة
+  const addProductToList = (newProduct) => {
+    setproductInfo((prevProducts) => [...prevProducts, newProduct]);
+  };
 
   const navigate = useNavigate(); // استخدام useNavigate للانتقال بعد الحفظ
   
@@ -42,10 +47,30 @@ const AddProduct = (props) => {
         <InfoProd h1="Add New Product" 
         endApi="AddProducts"
         closeModal={closeModal}
-        // getType={getType}
+        addProductToList={addProductToList} // تمرير الدالة لإضافة المنتج الجديد
         navigate={navigate}
+        // getType={getType}
         />
       </Modal>
+      {/* <div>
+        {productinfo.map((product) => (
+          <div key={product.id}>{product.name}</div>
+        ))}
+      </div> */}
+      {/* <div>
+        {productinfo.map((product) => (
+          <div key={product.id} className="product-item">
+            <h3>{product.name}</h3>
+            <p>{product.Description}</p>
+            {product.image && <img src={product.image} alt={product.name} style={{ width: "100px", height: "100px" }} />}
+            {product.pdf && (
+              <a href={product.pdf} target="_blank" rel="noopener noreferrer">
+                View PDF
+              </a>
+            )}
+          </div>
+        ))}
+      </div> */}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 .termsOfService{
-    flex: 1;
+    /* flex: 1; */
     background-color: white;
     padding: 5% 4%;
     margin: 6% 11%;
@@ -16,3 +16,8 @@
 #ptermsOfService{
     padding: 2% 6%;
 }
+
+@media (max-width: 768px) {
+    .termsOfService {
+        
+         min-width: 400px; }}

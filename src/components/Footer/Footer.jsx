@@ -21,6 +21,7 @@ function Footer() {
             <h3 className="h3footer">Privacy policy</h3>
           </Link>
         </div>
+        
         <div className="d1">
           <h3 className="h3footer">Contact Us:</h3>
           <Link to="jsdfgksdgh@gmail.com" className="linkk">
@@ -32,14 +33,14 @@ function Footer() {
           <Link to="jsdfgksdgh@gmail.com" className="linkk">
             <h4 className="h3footer">jsdfgksdgh@gmail.com</h4>
           </Link>
+          
         </div>
         <div>
-          <Link to="+0981398162735" className="linkk">
+        <Link to="+0981398162735" className="linkk">
             <h4 className="h3footer">+0981398162735</h4>
           </Link>
         </div>
-        {/* </div> */}
-      </div>
+        </div>
       <div className="lastfooter"
       >
         <h6 >JohntekValves.com © 2024 All Rights Reserved. </h6>

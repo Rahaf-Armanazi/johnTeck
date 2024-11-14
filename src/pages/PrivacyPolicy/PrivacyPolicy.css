@@ -15,3 +15,7 @@
 #pprivacy{
     padding: 2% 6%;
 }
+@media (max-width: 768px) {
+    .privacyPolicy {
+        
+         min-width: 400px; }}

@@ -1,13 +1,16 @@
 .contentFooter {
-    background-color: rgb(189 204 216);
+    background-color: #DAE3F3;
     width: 100%;
     /* position: relative; */
 }
 .allfooter {
-    display: flex;
+    /* background-color: blue; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill ,minmax(20%,1fr));
     justify-content: space-between;
     padding: 0 2%;
 }
+
 .linkk {
   text-decoration: none;
   color: rgb(0, 0, 0);
@@ -23,4 +26,56 @@
 }
 .h3footer{
     word-wrap:break-word ;
+}
+@media (width<= 480px) {
+  .allfooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2%;
+}
+.h3footer {
+  word-wrap: break-word;
+  font-size: x-small;
+}
+.lastfooter {
+  font-size: x-small;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+}
+/* جوالات  كبيرة */
+@media (width<= 768px) and (width> 480px)  {
+  .allfooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2%;
+}
+.h3footer {
+  word-wrap: break-word;
+  font-size: x-small;
+}
+.lastfooter {
+  font-size: x-small;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+}
+@media (width<= 1024px) and (width> 768px) {
+  .allfooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4%;
+}
+.h3footer {
+  word-wrap: break-word;
+  font-size: 18px;
+}
+.lastfooter {
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+}
 }

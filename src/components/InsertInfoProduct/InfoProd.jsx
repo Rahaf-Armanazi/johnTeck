@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faSave, faImage, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 
 const InfoProd = (props) => {
-  const { closeModal, endApi, name: initialName, Description: initialDescription, image: initialImage, pdf: initialPdf ,navigate } = props;
+  const { closeModal, endApi, name: initialName, Description: initialDescription, image: initialImage, pdf: initialPdf ,navigate ,addProductToList } = props;
   const [name, setName] = useState(initialName || "");
   const [Description, setDescription] = useState(initialDescription || "");
   const [image, setImage] = useState(null); // تعديل هذه الحالة
@@ -63,7 +63,7 @@ const InfoProd = (props) => {
   
     try {
       const res = await axios.post(
-        `http://192.168.43.97:4784/${endApi}`,
+        `http://192.168.137.29:4784/${endApi}`,
         formData,
         {
           headers: {
@@ -73,13 +73,15 @@ const InfoProd = (props) => {
       );
       if (res.status === 200) {
         // بعد حفظ البيانات بنجاح، نقوم بتحديث المنتجات
-        props.getType();
-  
+        const newProduct = res.data; // نحصل على المنتج الجديد من الاستجابة
+        addProductToList(newProduct);
+        console.log(newProduct);
+  // إغلاق النافذة المنبثقة
+  closeModal();
         // الانتقال إلى صفحة Dashboard
         navigate("/Dashboard", { replace: true });
   
-        // إغلاق النافذة المنبثقة
-        closeModal();}
+        }
     } catch (err) {
       console.log(err); // طباعة الخطأ في وحدة التحكم
       alert(`Error occurred while saving the product: ${err.message}`); // عرض رسالة الخطأ
