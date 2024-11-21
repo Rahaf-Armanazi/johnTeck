@@ -1,50 +1,3 @@
-/* .header {
-  box-shadow: 4px 14px 54px rgb(123 119 119);
-  margin-top: -0.5%;
-  width: 99%;
-  background: rgb(189 204 216);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.Transfers {
-  margin-right: 2%;
-}
-.linksss {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-  font-size: 18px;
-  margin-left: 40px;
-}
-.inputname {
-  border: 1px;
-  font-size: large;
-  background: #faf7ab;
-  border-radius: 15cap;
-  margin-top: 1.5%;
-  height: 45%;
-  width: 58%;
-  padding: 0 2%;
-}
-.forsearch {
-  position: absolute;
-  right: 10%;
-  width: 12%;
-  border: 1px;
-  font-size: large;
-  background: #faf7ab;
-  border-radius: 15cap;
-  margin-top: 1.5%;
-  padding: 1% 2%;
-}
-.bsearch {
-  width: 10px;
-  background: #faf7ab;
-}
-@media (max-) {
-} */
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -88,10 +41,15 @@
   padding:20px 50px 20px 20px;
   border: 1px solid #ccc;
   border-radius: 29px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   background-color: rgba(1, 1, -1, 0.1);
 }
-
+.arinp {
+  margin: 0% 543% 0% 0%;
+}
+.eninp{
+  margin-right: 10px;
+}
 .bsearch {
   background-color: #333;
   color: #fff;
@@ -108,12 +66,6 @@
 @media (max-width: 768px) {
   .header {
     display: none; }}
-  
-
-  
-  /* .hide {
-    display: none; /* أو يمكنك استخدام visibility: hidden; حسب احتياجاتك */
-  /* }  */
 
   .searchdiv{
     position: absolute;
@@ -124,7 +76,7 @@
     display: flex;
     margin-top: 0%;
   }
-  #ok{
+  .ok{
     position: absolute;
     right: 8%;
     border: 0;
@@ -133,10 +85,15 @@
     color: #867e7e;
     /* font-size: large; */
   }
+  .enok{
+    margin-right: 10px;
+  }
+  .arok{
+    margin: 0% 543% 0% 0%;
+  }
   .selectlinksss{
     background: none;
     border: 0;
-    /* color: white; */
   }
   .selectlinksss:hover {
     background-color: #333;
@@ -159,4 +116,12 @@ margin: 0px 0px 9px -20px;;
     font-size: 11px;
     padding: 28px 5px 28px 2px;
     transition: background-color 0.3s, color 0.3s;}
+  }
+  @media (width>=1025px) and (width<= 1920px)  {
+.linksss {
+    text-decoration: none;
+    color: #333;
+    padding: 4px 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
   }

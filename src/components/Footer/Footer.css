@@ -27,6 +27,12 @@
 .h3footer{
     word-wrap:break-word ;
 }
+.em{
+  font-size: small;
+}
+.top{
+  margin-top: 1%;
+}
 @media (width<= 480px) {
   .allfooter {
     display: flex;
@@ -36,6 +42,13 @@
 .h3footer {
   word-wrap: break-word;
   font-size: x-small;
+}
+.em {
+  margin: 0% 0%;
+  font-size: 8px;
+}
+.top{
+  margin-top: 2%;
 }
 .lastfooter {
   font-size: x-small;
@@ -55,6 +68,13 @@
   word-wrap: break-word;
   font-size: x-small;
 }
+.em {
+  margin: 1% 0%;
+  font-size: 8px;
+}
+.top{
+  margin-top: 1%;
+}
 .lastfooter {
   font-size: x-small;
   display: flex;
@@ -72,8 +92,39 @@
   word-wrap: break-word;
   font-size: 18px;
 }
+.em{
+  margin:7% 0%;
+  font-size: 11px;
+}
+.top{
+  margin-top: 1%;
+}
 .lastfooter {
   font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+}
+}
+@media (width<= 1920px) and (width>=1025px) {
+  .allfooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4%;
+}
+.h3footer {
+  word-wrap: break-word;
+  font-size: 21px;
+}
+.em {
+  margin: 7% 0%;
+  font-size: 16px;
+}
+.top{
+  margin-top: 1%;
+}
+.lastfooter {
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
   padding: 0 4%;

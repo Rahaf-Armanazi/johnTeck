@@ -1,89 +1,5 @@
-// import React , { useState }from "react";
-// import Logo from "../../Assets/logo.png"; // تأكد من أن المسار صحيح
-// // import axios from "axios";
-// import "@fortawesome/fontawesome-free/css/all.min.css"; // استيراد FontAwesome
-// import { Link ,  useNavigate , useParams} from "react-router-dom";
-// import "./Header.css";
-// import axios from "axios";
-
-// function Header() {
-//   // تعريف حالة للتحكم في إظهار أو إخفاء حقل الإدخال
-//   const [showInput, setShowInput] = useState(false);
-
-//   const [show,setShow]=useState([]);
-//   const [allprod, setallprod ] = useState([]);
-//   const [nameProduct, setNamePro] = useState("");
-
-//   const nav=useNavigate();
-//   // دالة لتغيير حالة الحقل عند الضغط على الأيقونة
-//   const handleSearchClick = () => {
-//     setShowInput(!showInput); // تبديل الحالة بين إظهار أو إخفاء
-//   };
-
-//   // Search function
-//   const submitsearch = async (e) => {
-//     e.preventDefault();
-//     if (nameProduct === "") {
-//       setallprod(allprod);
-//       console.log("allproduct");
-//     } else {
-//     try {
-//       const res = await axios.get(
-//         `http://192.168.137.29:4784/searchProducts/${nameProduct}`
-//       );
-//       setShow(res.data);
-//       console.log(show); // التحقق من النتائج التي تم إرجاعها
-//       if (res.status === 200 ) {
-//         // التنقل إلى صفحة Products وتمرير نتائج البحث
-//         nav(`/Products`, { state: { results: res.data } });
-//       } else {
-//         alert("No products found with that name.");
-//       }
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-//   }
-//   return (
-//     <div className="header">
-//       <div>
-//         <img src={Logo} alt="Logo" width="100" margin-right="6%" height="100" />
-//       </div>
-//       <div className="Transfers">
-//         <Link to="/" className="linksss">
-//           Home
-//         </Link>
-//         <Link to="/Products" className="linksss">
-//           Products
-//         </Link>
-//         <Link to="/AboutUs" className="linksss">
-//           About Us
-//         </Link>
-//         <Link to="/Terms" className="linksss">
-//           Terms of service
-//         </Link>
-//         <Link to="/PrivacyPolicy" className="linksss">
-//           Privacy policy
-//         </Link>
-//         <Link to="/ContactUs" className="linksss">
-//           Contact Us
-//         </Link>
-//         <Link to="/Certificates" className="linksss">
-//           Certificates
-//         </Link>
-//         <i className="fas fa-search linksss" onClick={handleSearchClick}></i>
-//         {showInput && (
-//
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Header;
-
-import React from "react";
-import { useState, useEffect, useRef  } from "react";
+import React ,{ startTransition } from "react";
+import { useState, useEffect, useRef } from "react";
 import Sidepar from "../Sidepar/Sidepar";
 import Button from "../btn/Btn";
 import Logo from "../../Assets/logonew.png"; // تأكد من أن المسار صحيح
@@ -91,8 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // استير�
 import { faBars } from "@fortawesome/free-solid-svg-icons"; // استيراد الأيقونات
 import axios from "axios";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // استيراد FontAwesome
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import "./Header.css";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 function Header() {
   // حالة للشريط الجانبي
@@ -104,8 +22,9 @@ function Header() {
   // تعريف حالة للتحكم في إظهار أو إخفاء حقل الإدخال
   const [showInput, setShowInput] = useState(false);
   const [productName, setNamePro] = useState("");
+  const navigate=useNavigate();
+
   const searchRef = useRef(null); // Reference for the search element
-  // const {productName}=useParams();
   // دالة لتغيير حالة الحقل عند الضغط على الأيقونة
   const handleSearchClick = () => {
     setShowInput(!showInput); // تبديل الحالة بين إظهار أو إخفاء
@@ -114,79 +33,96 @@ function Header() {
   // Search function
   const submitsearch = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.get(`api/${productName}`);
-      setNamePro(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+    navigate(`fsdfdfwe${productName}`);
   };
-// Close search input if clicked outside
-useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (searchRef.current && !searchRef.current.contains(event.target)) {
-      setShowInput(false);
-    }
+  // Close search input if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowInput(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  const { t, i18n } = useTranslation("header");
+  useEffect(() => {
+    var dir =i18n.language === "ar"?"rtl":"ltr";
+    var lang = i18n.language === "ar"?"ar":i18n.language === "en"? "en" : "tr";
+    document.documentElement.setAttribute("dir", dir);
+    document.documentElement.setAttribute("lang", lang);
+  }, [i18n.language]);
+
+  const ChangeOption = (event) => {
+    const languageCode = event.target.value;
+    startTransition(() => {
+      i18n.changeLanguage(languageCode);
+    });
+    console.log(event.target.value);
   };
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
 
   return (
     <div className="all">
-      <div className={`header ${isSidebarOpen ? "hide" : ""}`}  ref={searchRef}>
+      <div className={`header ${isSidebarOpen ? "hide" : ""}`} ref={searchRef}>
         <div className="logo">
           <img src={Logo} alt="Logo" />
         </div>
         <div className="transfers">
           <Link to="/" className="linksss">
-            Home
+            {t("L1")}
           </Link>
           <Link to="/Products" className="linksss">
-            Products
+            {t("L2")}
           </Link>
           <Link to="/AboutUs" className="linksss">
-            About Us
+            {t("L3")}
           </Link>
           <Link to="/Terms" className="linksss">
-            Terms of service
+            {t("L4")}
           </Link>
           <Link to="/PrivacyPolicy" className="linksss">
-            Privacy policy
+            {t("L5")}
           </Link>
           <Link to="/ContactUs" className="linksss">
-            Contact Us
-         </Link>
-         <Link to="/Certificates" className="linksss">
-            Certificates
-         </Link>
+            {t("L6")}
+          </Link>
+          <Link to="/Certificates" className="linksss">
+            {t("L7")}
+          </Link>
           <form action="name the aplication" method="0" className="linksss">
-            <select name="language" className="selectlinksss">
-              <option> arabic </option>
-              <option selected="selected"> English </option>
-              <option> Turki </option>
+            <select
+              onChange={ChangeOption}
+              name="language"
+              className="selectlinksss"
+            >
+              <option value="en"> {t("lang1")} </option>
+              <option value="ar"> {t("lang2")} </option>
+              <option value="tr"> {t("lang3")} </option>
             </select>
           </form>
-          
+
+          {/* 
+           /////////////////////////////////    زر البحث 
           {showInput && (
             <form onSubmit={submitsearch} className="searchdiv">
               <div className="forsearch">
-              <button type="submit" id="ok">
-                  ok
+                <button type="submit" className={i18n.language === "ar" ? "ok arok" : "ok enok"}>
+                {t("searchButton")}
                 </button>
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="inputname"
+                   className={i18n.language === "ar" ? "inputname arinp" : "inputname eninp"}
+                    dir="ltr"
                   value={productName}
                   onChange={(event) => setNamePro(event.target.value)}
                 />
               </div>
             </form>
           )}
-          <i className="fas fa-search linksss" onClick={handleSearchClick}></i>
+          <i className="fas fa-search linksss" onClick={handleSearchClick}></i> */}
         </div>
       </div>
       {/* زر فتح الشريط الجانبي */}

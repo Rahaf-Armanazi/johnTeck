@@ -7,3 +7,10 @@ body{
   background-color: aqua;
   flex-grow: 1;
 }
+.transparent-bg {
+  background-color: transparent;
+}
+
+.default-bg {
+  background-color: #f0f0f0; /* أو أي لون آخر */
+}

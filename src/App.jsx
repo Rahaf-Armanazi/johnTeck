@@ -1,5 +1,3 @@
-// import Header from "./components/Header/Header";
-// import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home"; // استيراد المكون
 import "./App.css";
 import DashBoard from "./pages/DashBoard/DashBoard";
@@ -9,7 +7,12 @@ import { Routes, Route } from "react-router";
 import Product from "./pages/Product/Product";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
 import AboutUs from "./pages/AboutUs/AboutUs";
+// import Contact from "./components/ContactUs.jsx/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
+import ContactUs from "./pages/ContactUs/ContactUs";
+import Certificates from "./pages/Certificates/Certificates";
+import { Suspense } from "react";
+import BrowserWarning from "./pages/BrowserWarning/BrowserWarning";
 
 export default function App() {
   const location = useLocation();
@@ -18,6 +21,7 @@ export default function App() {
   const isAboutPage = location.pathname === "/AboutUs";
 
   return (
+    <Suspense fallback={<div>Loading application...</div>}><BrowserWarning/>
     <div
       style={{
         backgroundColor: isAboutPage ? "transparent" : "",
@@ -32,7 +36,10 @@ export default function App() {
         <Route path="/Products" element={<Product />} />
         <Route path="/Terms" element={<TermsOfService />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/ContactUs" element={<ContactUs/>}/>
+        <Route path="/Certificates" element={<Certificates/>}/>
       </Routes>
     </div>
+    </Suspense>
   );
 }

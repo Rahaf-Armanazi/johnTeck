@@ -1,4 +1,25 @@
-/* @media (max-width: 1920)and (min-width:1025) { */
+.slider-container {
+  position: relative;
+  width: 600px;
+  margin: auto;
+  border-radius: 80%;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 2s ease-in-out;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/*  */
+
 .logooo {
   padding-left: 20%;
   padding-top: 7%;
@@ -25,9 +46,9 @@
 .imgshome {
   width: 80%;
   margin: 0% 10%;
-  max-height: 500px;
+  max-height: 450px;
   box-shadow: 2px 0px 70px rgb(43 41 11);
-  border-radius: 14cap;
+  border-radius: 4cap;
 }
 .imgshomeall {
   position: relative;
@@ -45,7 +66,7 @@
   opacity: 0;
   max-height: 520px;
   object-fit: cover;
-  border-radius: 14cap;
+  border-radius: 4cap;
   transform: scale(1.1); /* الصورة تبدأ بمقياس أكبر قليلاً */
   transform-origin: center; /* نقطة التحول ستكون من المركز */
   transition: opacity 2s ease, transform 0.5s ease; /* التحول التدريجي للشفافية والحجم */
@@ -55,7 +76,7 @@
   width: 100%;
   max-height: 520px;
   object-fit: cover;
-  border-radius: 14cap;
+  border-radius: 4cap;
 }
 .image.active {
   opacity: 1;
@@ -71,25 +92,40 @@
 .half {
   max-height: 520px;
   width: 100%;
-  border-top-left-radius: 14cap;
-  border-bottom-left-radius: 14cap;
+  /* border-top-left-radius: 14cap; */
+  /* border-bottom-left-radius: 14cap; */
 }
 .half img {
   width: 100%;
-  height: 520px;
+  height: 450px;
   object-fit: cover;
-  border-top-left-radius: 14cap;
-  border-bottom-left-radius: 14cap;
+  /* border-top-left-radius: 14cap; */
+  /* border-bottom-left-radius: 14cap; */
+}
+.arh {
+  border-top-right-radius: 4cap;
+  border-bottom-right-radius: 4cap;
+}
+.arh img {
+  border-top-right-radius: 4cap;
+  border-bottom-right-radius: 4cap;
+}
+.enh {
+  border-top-left-radius: 4cap;
+  border-bottom-left-radius: 4cap;
+}
+.enh img {
+  border-top-left-radius: 4cap;
+  border-bottom-left-radius: 4cap;
 }
 .half2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-top-right-radius: 14cap;
-  border-bottom-right-radius: 14cap;
+  border-top-right-radius: 4cap;
+  border-bottom-right-radius: 4cap;
 }
 .div222 {
-  max-height: 520px;
   display: flex;
   margin-bottom: 15%;
   /* border: 2px solid rgb(84, 188, 252); */
@@ -121,11 +157,94 @@
   box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3); /* تكبير الظل عند التفاعل */
 }
 .p_home {
+  font-style: oblique;
   justify-content: center;
   display: flex;
   color: #0000007a;
 }
-/* } */
+@media (width<= 1920px) and (width>=1025px) {
+  .logooo {
+    padding-top: 7%;
+    padding-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+  }
+  .ar {
+    padding: 8% 10% 3% 8%;
+  }
+  .en {
+    padding-left: 10%;
+  }
+  .logoimg1 {
+    width: 178px;
+    height: 173px;
+  }
+  .name1 {
+    margin-left: 0%;
+    margin-top: 1%;
+    width: 545px;
+    height: 171px;
+  }
+  .p_home {
+    font-style: oblique;
+    justify-content: center;
+    display: flex;
+    color: #0000007a;
+    margin: 2% 6% 0% 8%;
+    font-size: x-large;
+  }
+  .font-the-h {
+    margin-left: 0%;
+    margin-top: 12%;
+    display: flex;
+    justify-content: center;
+    font-size: 33px;
+    font-style: oblique;
+  }
+  .imgshome {
+    width: 80%;
+    margin: 0% 10%;
+    max-height: 500px;
+    box-shadow: 2px 0px 70px rgb(43 41 11);
+    border-radius: 4cap;
+  }
+  .div222 {
+    max-height: 500px;
+    display: flex;
+    margin-bottom: 15%;
+    /* border: 2px solid rgb(84, 188, 252); */
+  }
+  .half img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    /* border-top-left-radius: 14cap; */
+    /* border-bottom-left-radius: 14cap; */
+  }
+  .font_h-ener {
+    text-shadow: 3px 6px 5px #888888;
+    margin-left: 9%;
+    margin-top: 19%;
+    font-size: 50px;
+    font-style: oblique;
+  }
+  .btn1 {
+    width: 49%;
+    margin-left: 25%;
+    margin-top: 6%;
+    color: #101010a3;
+    background-color: #0202023b;
+    font-size: 36px;
+    font-style: initial;
+    border: none;
+    padding: 10px 30px;
+
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+}
 /* جوالات صغيرة */
 @media (width<= 480px) {
   .logooo {
@@ -165,21 +284,21 @@
     height: 150px;
     width: 80%;
     box-shadow: 2px 0px 70px rgb(43 41 11);
-    border-radius: 14cap;
+    border-radius: 4cap;
   }
   .half img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-left-radius: 14cap;
-    border-bottom-left-radius: 14cap;
+    /* border-top-left-radius: 14cap; */
+    /* border-bottom-left-radius: 14cap; */
   }
   .half2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-right-radius: 14cap;
-    border-bottom-right-radius: 14cap;
+    border-top-right-radius: 4cap;
+    border-bottom-right-radius: 4cap;
   }
   .btn1 {
     margin-left: 15%;
@@ -209,7 +328,7 @@
     width: 100%;
     max-height: 520px;
     object-fit: cover;
-    border-radius: 14cap;
+    border-radius: 4cap;
   }
 }
 
@@ -253,21 +372,21 @@
     height: 199px;
     width: 80%;
     box-shadow: 2px 0px 26px rgb(43 41 11);
-    border-radius: 14cap;
+    border-radius: 4cap;
   }
   .half img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-left-radius: 14cap;
-    border-bottom-left-radius: 14cap;
+    /* border-top-left-radius: 14cap; */
+    /* border-bottom-left-radius: 14cap; */
   }
   .half2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-right-radius: 14cap;
-    border-bottom-right-radius: 14cap;
+    border-top-right-radius: 4cap;
+    border-bottom-right-radius: 4cap;
   }
   .btn1 {
     margin-left: 15%;
@@ -297,20 +416,19 @@
     width: 100%;
     max-height: 520px;
     object-fit: cover;
-    border-radius: 14cap;
+    border-radius: 4cap;
   }
 }
 /* تابليت */
-@media (width<= 1024px) and (width> 768px)  {
+@media (width<= 1024px) and (width> 768px) {
   .logooo {
     justify-content: center;
-        padding-left: 11%;
-        padding-top: 10%;
-        padding-bottom: 5%;
-        display: flex;
-        width: 75%;
-    }
-
+    padding-left: 11%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    display: flex;
+    width: 75%;
+  }
   .logoimg1 {
     width: 135px;
     height: 141px;
@@ -326,7 +444,7 @@
     display: flex;
     font-size: 18px;
     color: #0000007a;
-    margin: 3% 10% 3% 11%
+    margin: 3% 10% 3% 11%;
   }
   .font-the-h {
     margin-left: 3%;
@@ -339,16 +457,17 @@
   }
   .imgshome {
     height: 312px;
+
     width: 80%;
     box-shadow: 2px 0px 26px rgb(43 41 11);
-    border-radius: 14cap;
+    border-radius: 4cap;
   }
   .half img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-left-radius: 14cap;
-    border-bottom-left-radius: 14cap;
+    /* border-top-left-radius: 14cap; */
+    /* border-bottom-left-radius: 14cap; */
   }
   .half2 {
     width: 100%;
@@ -385,6 +504,6 @@
     width: 100%;
     max-height: 520px;
     object-fit: cover;
-    border-radius: 14cap;
+    border-radius: 4cap;
   }
 }

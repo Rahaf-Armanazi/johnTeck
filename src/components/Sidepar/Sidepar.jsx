@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef ,startTransition } from "react";
 import Logo from "../../Assets/logo.png";
 import { Link } from "react-router-dom";
 import "./Sidepar.css";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // استيراد المكون
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"; // استيراد الأيقونات
@@ -65,6 +66,33 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   }, [
     // toggleSidebar
   ]);
+  const { t, i18n } = useTranslation("sidepar");
+  useEffect(() => {
+    var dir = "";
+    if (i18n.language === "ar") {
+      dir = "rtl";
+    } else {
+      dir = "ltr";
+    }
+    var lang = "";
+    if (i18n.language === "ar") {
+      lang = "ar";
+    } else if (i18n.language === "en") {
+      lang = "en";
+    } else {
+      lang = "tr";
+    }
+    document.documentElement.setAttribute("dir", dir);
+    document.documentElement.setAttribute("lang", lang);
+  }, [i18n.language]);
+
+  const ChangeOption = (event) => {
+    const languageCode = event.target.value;
+    startTransition(() => {
+      i18n.changeLanguage(languageCode);
+    });
+    console.log(event.target.value);
+  };
   return (
     <div className={`sidebar ${isOpen ? "open" : "close"}`} ref={sidebarRef
       // searchRef
@@ -78,50 +106,56 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </div>
 
       <Link to="/" className="linksss">
-        Home
+      {t("L1")}
       </Link>
       <Link to="/Products" className="linksss">
-        Products
+      {t("L2")}
       </Link>
       <Link to="/AboutUs" className="linksss">
-        About Us
+      {t("L3")}
       </Link>
       <Link to="/Terms" className="linksss">
-        Terms of service
+      {t("L4")}
       </Link>
       <Link to="/PrivacyPolicy" className="linksss">
-        Privacy policy
+      {t("L5")}
       </Link>
       <Link to="/ContactUs" className="linksss">
-        Contact Us
+      {t("L6")}
       </Link>
       <Link to="/Certificates" className="linksss">
-        Certificates
+      {t("L7")}
       </Link>
       <form action="name the aplication" method="0" className="linksss">
-        <select name="language" className="selectlinksss">
-          <option> arabic </option>
-          <option selected="selected"> English </option>
-          <option> Turki </option>
-        </select>
-      </form>
+      <select
+              onChange={ChangeOption}
+              name="language"
+              className="selectlinksss"
+            >
+              <option value="en"> {t("lang1")} </option>
+              <option value="ar"> {t("lang2")} </option>
+              <option value="tr"> {t("lang3")} </option>
+            </select>
+          </form>
+      {/* 
+      /////////////////////////////////   زر البحث
       <i className="fas fa-search linksss" onClick={handleSearchClick}></i>
       {showInput && (
         <form onSubmit={submitsearch} className="searchside"  ref={searchRef}>
           <div className="forsearch">
-            <button type="submit" id="okside">
-              ok
+            <button type="submit" className={i18n.language === "ar" ? "okside aroks" : "okside enoks"}>
+            {t("searchButton")}
             </button>
             <input
               type="text"
               placeholder="Search..."
-              className="inputnamesid"
+              className= {i18n.language === "ar" ? "inputnamesid arins" : "inputnamesid enins"}
               value={productName}
               onChange={(event) => setNamePro(event.target.value)}
             />
           </div>
         </form>
-      )}
+      )} */}
     </div>
   );
 };

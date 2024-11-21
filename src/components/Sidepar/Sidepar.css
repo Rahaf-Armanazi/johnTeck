@@ -1,6 +1,7 @@
 /* CSS للشريط الجانبي */
 .sidebar {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: -3250px; /* بداية من اليسار لإخفاء الشريط */
   width: 160px;
@@ -42,19 +43,32 @@
   margin: 6% 0% 10% -8%;
   border: 1px solid #ccc;
   border-radius: 29px;
-  margin-right: 10px;
   background-color: rgba(1, 1, -1, 0.1);
 }
-#okside{
+.arins {
+  padding: 10px 6px 10px 25px;
+  margin-right: -20px;
+}
+.enins{
+  padding: 10px 26px 10px 7px;
+    margin: 5% 0% 7% -9%;
+  margin-right: 10px;
+}
+.okside{
   position: absolute;
-  top: 613px;
+  top: 612px;
   right: 3%;
   border: 0;
   background: none;
   cursor: pointer;
   color: #867e7e;
 }
+.aroks{
+  margin: -1% 79% 0% 0%;
+}
+.enoks{
 
+}
 
 /* الشريط الجانبي في الشاشات الصغيرة */
 @media (max-width: 768px) {

@@ -7,75 +7,129 @@ import "../../components/Footer/Footer.css";
 import Logo from "../../Assets/logo.png"; // تأكد من أن المسار صحيح
 import names from "../../Assets/names.png";
 import { Link } from "react-router-dom";
+import Home21 from "../../Assets/12.jpg";
+import Home22 from "../../Assets/big4.jpg";
+import Home23 from "../../Assets/About Us.png";
 
+import { useTranslation } from "react-i18next";
 function Home() {
-  const images = [
-    require("../../Assets/12.jpg"),
-    require("../../Assets/doc_2024-10-01_23-38-20.png"),
-    require("../../Assets/big3.jpg"),
-  ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [Home21, Home22, Home23];
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const totalImages = [images[images.length - 1], ...images, images[0]];
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // تغيير الصورة كل 3 ثواني
+    const interval = setInterval(() => {
+      goToNextSlide();
+    }, 4000);
 
-    return () => clearInterval(intervalId); // تنظيف المؤقت عند انتهاء المكون
-  }, [images.length]);
+    return () => clearInterval(interval);
+  }, []);
+  const goToNextSlide = () => {
+    if (currentIndex === totalImages.length - 1) {
+      setIsTransitioning(false);
+      setCurrentIndex(1);
+    } else {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
+  };
+  const goToPrevSlide = () => {
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(totalImages.length - 2);
+    } else {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) => prevIndex - 1);
+    }
+  };
+  const handleTransitionEnd = () => {
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(totalImages.length - 2);
+    } else if (currentIndex === totalImages.length - 1) {
+      setIsTransitioning(false);
+      setCurrentIndex(1);
+    }
+  };
 
-  return (
+  const { t, i18n } = useTranslation("Home");
+  useEffect(() => {
+    var dir = "";
+    if (i18n.language === "ar") {
+      dir = "rtl";
+    } else {
+      dir = "ltr";
+    }
+    var lang = "";
+    if (i18n.language === "ar") {
+      lang = "ar";
+    } else if (i18n.language === "en") {
+      lang = "en";
+    } else {
+      lang = "tr";
+    }
+    document.documentElement.setAttribute("dir", dir);
+    document.documentElement.setAttribute("lang", lang);
+  }, [i18n.language]); // Re-run when the language changes
+ return (
     <div className="homepage">
       <Header />
-      <div className="logooo">
+      <div className={i18n.language === "ar" ? "logooo ar" : "logooo en"} dir="ltr">
         <img src={Logo} alt="Logo" className="logoimg1" />
         <img src={names} alt="name" className="name1" />
       </div>
       <h2 className="p_home">
-        Discover the precision and reliability of our expertly crafted valve
-        products.
+        {t("phomeh2")}
       </h2>
       <h3 className="p_home">
-        With years of industry experience, we are committed to delivering
-        solutions that meet the highest standards of quality and performance.
+        {t("phomeh3")}
       </h3>
-      <h2 className="font-the-h">Our Commitment to Excellence</h2>
-
-      <div className="imgshome">
-        <div className="imgshomeall">
-        <img
-        src={images[currentIndex]}
-        alt="صورة متغيرة"
-        className="im1"
-      />
-          {/* {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`صورة ${index}`}
-              className={`image ${
-                index === currentIndex ? 'active' : ''
-              }`}
-            />
-          ))} */}
+      <h2 className="font-the-h">
+        {t("font-the-h1")}
+      </h2>
+      <div className="imgshome slider-container">
+        <div className="imgshomeall ">
+          <div dir="ltr"
+            className="slider-wrapper"
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: isTransitioning
+                ? "transform 0.5s ease-in-out"
+                : "none",
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {totalImages.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`عرض الصورة ${index}`}
+                className="slider-image"
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      <h2 className="font-the-h">Discover Our Selection of Products</h2>
+      <h2 className="font-the-h">
+        {t("font-the-h2")}
+      </h2>
       
       <div className="imgshome div222">
-        <div className="half pppppp">
+        <div className={i18n.language === "ar" ? "half pppppp arh" : "half pppppp enh"}>
           <img src={require("../../Assets/big4.jpg")} alt="منتج تاني" />
         </div>
         <div className="half2 pppppp">
           <div>
             <h2 className="font_h-ener">
-              Quality Valves for Every Application
+              {t("font-the-ener")}
             </h2>
           </div>
           <Link to="/Products">
-            <button className="btn1">Products</button>
+            <button className="btn1">{t("button")}</button>
           </Link>
         </div>
       </div>
