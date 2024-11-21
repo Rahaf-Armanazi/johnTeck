@@ -10,7 +10,7 @@ const ProductUser = () => {
   useEffect(() => {
       const fetchData = async () => {
         try {
-          const res = await axios.get("http://192.168.43.104:8000/api/products");
+          const res = await axios.get("/api/products");
           console.log(res.data)
           SetIn(res.data);
         } catch (err) {
@@ -26,7 +26,7 @@ const ProductUser = () => {
       <div className="C1user">
         <img
           className="imageUser"
-          src={`http://192.168.43.104:8000/storage/products/images/${e.image}`}
+          src={`/storage/products/images/${e.image}`}
           alt="helooo i am not heer"
         />
         {/* <Stander/> */}
@@ -37,7 +37,7 @@ const ProductUser = () => {
           <h1 className="productNameuser">{e.EnglishName}</h1>
           <div className="PIuser">
             <p className="productdeDescriptionuser">{e.EnglishDescription}</p>
-            <Link to={`http://192.168.43.104:8000/storage/products/pdfs/${e.pdf}`}>
+            <Link to={`/storage/products/pdfs/${e.pdf}`}>
              <img
               className="pdfuser"
               src={require("../../Assets/images__3_-removebg-preview.png")}
@@ -49,8 +49,9 @@ const ProductUser = () => {
 
         <p className="C3user">
           <Link to="/contactUs" className="linuser">
-            Contact Us{" "}
+            Contact Us 
           </Link>
+          
           to order & inquire about this product
         </p>
       </div>
@@ -71,7 +72,7 @@ export default ProductUser;
 //     } else {
 //     try {
 //       const res = await axios.get(
-//         `http://192.168.137.29:4784/searchProducts/${nameProduct}`
+//         `/searchProducts/${nameProduct}`
 //       );
 //       setShow(res.data);
 //       console.log(show); // التحقق من النتائج التي تم إرجاعها

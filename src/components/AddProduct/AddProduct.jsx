@@ -16,7 +16,7 @@ const AddProduct = () => {
   // عرض البيانات من الداتا
   const [productinfo, setproductInfo] = useState([]);
   // const getType = async () => {
-  //   const response = await axios.get("http://192.168.137.29:4784/AllProducts");
+  //   const response = await axios.get("/AllProducts");
   //   setproductInfo(response.data);
   // };
 

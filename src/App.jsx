@@ -7,12 +7,10 @@ import { Routes, Route } from "react-router";
 import Product from "./pages/Product/Product";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
 import AboutUs from "./pages/AboutUs/AboutUs";
-// import Contact from "./components/ContactUs.jsx/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Certificates from "./pages/Certificates/Certificates";
 import { Suspense } from "react";
-import BrowserWarning from "./pages/BrowserWarning/BrowserWarning";
 
 export default function App() {
   const location = useLocation();
@@ -21,13 +19,12 @@ export default function App() {
   const isAboutPage = location.pathname === "/AboutUs";
 
   return (
-    <Suspense fallback={<div>Loading application...</div>}><BrowserWarning/>
+    <Suspense fallback={<div>Loading application...</div>}>
     <div
       style={{
         backgroundColor: isAboutPage ? "transparent" : "",
       }}
     >
-      
       {/* باقي المحتوى */}
       <Routes>
         <Route path="/" element={<Home />} />

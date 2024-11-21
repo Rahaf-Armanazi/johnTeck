@@ -63,7 +63,7 @@ const InfoProd = (props) => {
   
     try {
       const res = await axios.post(
-        `http://192.168.137.29:4784/${endApi}`,
+        `/${endApi}`,
         formData,
         {
           headers: {

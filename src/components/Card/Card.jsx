@@ -24,7 +24,7 @@ const Card = () => {
   // عرض البيانات من الداتا
   const [productinfo, setproductInfo] = useState([]);
   const getType = async () => {
-    const response = await axios.get("http://192.168.137.29:4784/AllProducts");
+    const response = await axios.get("/AllProducts");
     setproductInfo(response.data);
   };
 
@@ -45,14 +45,14 @@ const Card = () => {
       <p>{i.id}</p>
       <img
         className="imageDashboard"
-        src={`http://192.168.137.29:4784/images/${i.Image}`}
+        src={`/images/${i.Image}`}
         alt="Product Image"
       />
       <div className="productdetails">
         <h1 className="productName">{i.name}</h1>
         <div className="PI">
           <p className="productdeDescription">{i.Description}</p>
-          <Link to={`http://192.168.137.29:4784/Document/${i.pdf}`}>
+          <Link to={`/Document/${i.pdf}`}>
             <img
               className="pdfuser"
               src={require("../../Assets/images__3_-removebg-preview.png")}

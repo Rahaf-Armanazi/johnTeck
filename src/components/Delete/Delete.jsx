@@ -6,7 +6,7 @@ export const Delete = (props) => {
   const deleteprod = async (productId) => {
     try {
       const req = await axios.post(
-        `http://192.168.137.29:4784/deleteProducts/${productId}`
+        `/deleteProducts/${productId}`
       );
       console.log("Deleted successfully:", req.data); // تحقق من الاستجابة
       // SetProdInfo(prodinfo.filter((element) => element.id !== productId));

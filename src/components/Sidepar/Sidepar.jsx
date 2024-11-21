@@ -41,7 +41,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const submitsearch = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`api/${productName}`);
+      const res = await axios.get(`/${productName}`);
       setNamePro(res.data);
     } catch (err) {
       console.log(err);
