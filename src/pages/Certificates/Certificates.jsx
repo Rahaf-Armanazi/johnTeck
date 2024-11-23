@@ -12,7 +12,7 @@ const Certificates = () => {
     const data = async () => {
       try {
         const res1 = await axios.get(
-          "/api/certificates"
+          "/backend/api/certificates"
         );
         SetCert(res1.data);
       } catch (err) {
@@ -24,10 +24,10 @@ const Certificates = () => {
 
   const arrcerte = certe.map((e) => (
     <div>
-      <Link to={`/storage/Certificates/pdf/${e.pdf}`}>
+      <Link to={`/backend/storage/Certificates/pdf/${e.pdf}`}>
         <img
           className="pdfuser"
-          src={`/storage/Certificates/image/${e.image}`}
+          src={`/backend/storage/Certificates/image/${e.image}`}
           alt="helooo i am not heer"
         />
       </Link>

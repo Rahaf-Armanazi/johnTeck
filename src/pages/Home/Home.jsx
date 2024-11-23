@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 import Home21 from "../../Assets/12.jpg";
 import Home22 from "../../Assets/big4.jpg";
 import Home23 from "../../Assets/About Us.png";
-
 import { useTranslation } from "react-i18next";
+
 function Home() {
 
   const images = [Home21, Home22, Home23];
