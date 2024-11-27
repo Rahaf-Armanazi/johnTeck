@@ -16,7 +16,8 @@ const DeleteCer = (props) => {
   };
 
   return (
-    <div>
+    <div>https://chatgpt.com/c/67458fb7-82e0-8002-8f84-7e2e5fb5482e
+        http://172.17.17.38:8000/api/products
       <h1> Are you sure you want top delete this Certificate ???{props.id}</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <button
