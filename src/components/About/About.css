@@ -56,10 +56,10 @@
 @media (width<= 1024px) and (width> 768px) {
   .aboutus {
     margin-left: 41%;
-    margin-bottom: 6%;
-    margin-top: 6%;
-    padding: 4% 3% 4% 5%;
-  }
+    margin-bottom: 10%;
+    margin-top: 11%;
+    padding: 10% 5% 16% 5%;
+}
   #H3 {
     font-size: x-large;
     font-weight: bold;

@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faSave, faImage, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 
 const InfoProd = (props) => {
-  const { closeModal, endApi, name: initialName, Description: initialDescription, image: initialImage, pdf: initialPdf ,navigate ,addProductToList } = props;
-  const [name, setName] = useState(initialName || "");
-  const [Description, setDescription] = useState(initialDescription || "");
+  const { closeModal, endApi, EnglishName: initialName, DescriptionEn: initialDescriptionEn, DescriptionTr:initialDescriptionTr,DescriptionAr:initialDescriptionAr, standard:initialStand,image: initialImage, pdf: initialPdf ,navigate ,addProductToList } = props;
+  const [EnglishName, setName] = useState(initialName  || "");
+  const [EnglishDescription, setDescriptionEn] = useState(initialDescriptionEn || "");
+  const [TurkishDescription, setDescriptionTr] = useState(initialDescriptionTr || "");
+  const [ArabicDescription, setDescriptionAr] = useState(initialDescriptionAr || "");
+  const [standard, setStandEn] = useState(initialStand|| "");
   const [image, setImage] = useState(null); // تعديل هذه الحالة
   const [pdf, setPdf] = useState(null);
   
@@ -17,7 +20,10 @@ const InfoProd = (props) => {
   // تحديث الحقول عند فتح النافذة
   useEffect(() => {
     setName(initialName);
-    setDescription(initialDescription);
+    setDescriptionEn(initialDescriptionEn);
+    setDescriptionTr(initialDescriptionTr);
+    setDescriptionAr(initialDescriptionAr);
+    setStandEn(initialStand);
 
     // التحقق مما إذا كان يوجد صورة مبدئية
     if (initialImage) {
@@ -34,7 +40,8 @@ const InfoProd = (props) => {
     } else {
       setPdfUploaded(false); // لا يوجد ملف PDF مبدئي
     }
-  }, [initialName, initialDescription, initialImage, initialPdf]);
+  }, [initialName, initialDescriptionEn,initialDescriptionTr,
+    initialDescriptionAr,initialStand, initialImage, initialPdf]);
 
   const handleFileChange = (e, setFile, setUploaded) => {
     const file = e.target.files[0];
@@ -43,12 +50,14 @@ const InfoProd = (props) => {
       setUploaded(true); // ضبط حالة الرفع
     }
   };
-
   const Saveinfo = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("Description", Description);
+    formData.append("EnglishName", EnglishName);
+    formData.append("EnglishDescription", EnglishDescription);
+    formData.append("TurkishDescription", TurkishDescription);
+    formData.append("ArabicDescription", ArabicDescription);
+    formData.append("standard", standard);
     
     // التأكد من أن الصورة والـ PDF هما كائنات ملفات وليس نصوص
     if (image instanceof File) {
@@ -62,8 +71,8 @@ const InfoProd = (props) => {
     console.log([...formData]);
   
     try {
-      const res = await axios.post(
-        `/${endApi}`,
+      const res = await axios.post(`
+        http://172.17.17.38:8000/api/${endApi}`,
         formData,
         {
           headers: {
@@ -84,7 +93,6 @@ const InfoProd = (props) => {
         }
     } catch (err) {
       console.log(err); // طباعة الخطأ في وحدة التحكم
-      alert(`Error occurred while saving the product: ${err.message}`); // عرض رسالة الخطأ
     }    
   };
   
@@ -97,18 +105,52 @@ const InfoProd = (props) => {
             type="text"
             placeholder=" Please enter the product name. "
             className="p5"
-            value={name}
+            value={EnglishName}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+        
         <div className="p4">
-          <label id="p4">Product Description :</label>
+          <label id="p4">Product Description English:</label>
           <input
             type="text"
             placeholder=" Please enter product description "
             className="p5"
-            value={Description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={EnglishDescription}
+            onChange={(e) => setDescriptionEn(e.target.value)}
+          />
+        </div>
+
+        <div className="p4">
+          <label id="p4">Product Description Arabic:</label>
+          <input
+            type="text"
+            placeholder=" Please enter product description "
+            className="p5"
+            value={ArabicDescription}
+            onChange={(e) => setDescriptionAr(e.target.value)}
+          />
+        </div>
+
+        <div className="p4">
+          <label id="p4">Product Description Turki:</label>
+          <input
+            type="text"
+            placeholder=" Please enter product description "
+            className="p5"
+            value={TurkishDescription}
+            onChange={(e) => setDescriptionTr(e.target.value)}
+          />
+        </div>
+
+        <div className="p4">
+          <label id="p4">Product Stander English:</label>
+          <input
+            type="text"
+            placeholder=" Please enter product Stander English"
+            className="p5"
+            value={standard}
+            onChange={(e) => setStandEn(e.target.value)}
           />
         </div>
 

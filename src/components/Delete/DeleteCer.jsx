@@ -1,12 +1,12 @@
-import axios from "axios";
 import React from "react";
+import axios from "axios";
 
-export const Delete = (props) => {
+const DeleteCer = (props) => {
   const deleteprod = async (id) => {
     try {
-      const req = await axios.post(
-        `http://172.17.17.38:8000/api/delete`,{id}
-      );
+      const req = await axios.post(`http://172.17.17.38:8000/api/delete`, {
+        id,
+      });
       console.log("Deleted successfully:", req.data); // تحقق من الاستجابة
       props.getType();
       props.closedelete();
@@ -17,7 +17,7 @@ export const Delete = (props) => {
 
   return (
     <div>
-      <h1> Are you sure you want top delete this product ???{props.id}</h1>
+      <h1> Are you sure you want top delete this Certificate ???{props.id}</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <button
           className="btnSub"
@@ -33,3 +33,5 @@ export const Delete = (props) => {
     </div>
   );
 };
+
+export default DeleteCer;

@@ -24,7 +24,7 @@ const Card = () => {
   // عرض البيانات من الداتا
   const [productinfo, setproductInfo] = useState([]);
   const getType = async () => {
-    const response = await axios.get("/AllProducts");
+    const response = await axios.get("http://172.17.17.38:8000/api/products");
     setproductInfo(response.data);
   };
 
@@ -45,14 +45,14 @@ const Card = () => {
       <p>{i.id}</p>
       <img
         className="imageDashboard"
-        src={`/images/${i.Image}`}
+        src={`http://172.17.17.38:8000/storage/products/images/${i.image}`}
         alt="Product Image"
       />
       <div className="productdetails">
-        <h1 className="productName">{i.name}</h1>
+        <h1 className="productName">{i.EnglishName}</h1>
         <div className="PI">
-          <p className="productdeDescription">{i.Description}</p>
-          <Link to={`/Document/${i.pdf}`}>
+          <p className="productdeDescription">{i.EnglishDescription}</p>
+          <Link to={`http://172.17.17.38:8000/storage/products/pdfs/${i.pdf}`}>
             <img
               className="pdfuser"
               src={require("../../Assets/images__3_-removebg-preview.png")}
@@ -76,7 +76,6 @@ const Card = () => {
   const addProductToList = (newProduct) => {
     setproductInfo((prevProducts) => [...prevProducts, newProduct]);
   };
-  
 
   return (
     <div>
@@ -90,14 +89,16 @@ const Card = () => {
         {selectedProduct && (
           <InfoProd
             h1={selectedProduct.id ? "Update the Product" : "Add a New Product"}
-            name={selectedProduct.name}
-            Description={selectedProduct.Description}
-            image={selectedProduct.Image}
+            EnglishName={selectedProduct.EnglishName}
+            DescriptionEn={selectedProduct.EnglishDescription}
+            DescriptionTr={selectedProduct.TurkishDescription}
+            DescriptionAr={selectedProduct.ArabicDescription}
+            image={selectedProduct.image}
             pdf={selectedProduct.pdf}
             endApi={
               selectedProduct.id
-                ? `updateProducts/${selectedProduct.id}`
-                : "addProduct"
+                ? `updateProduct/${selectedProduct.id}`
+                : "storage"
             }
             closeModal={closeModal}
             getType={getType}
@@ -115,7 +116,7 @@ const Card = () => {
           <>
             <Delete
               closedelete={closedelete}
-              productId={selectedProduct.id}
+              id={selectedProduct.id}
               getType={getType}
             />
           </>

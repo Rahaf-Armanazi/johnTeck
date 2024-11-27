@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef ,startTransition } from "react";
 import Logo from "../../Assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import "./Sidepar.css";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -10,7 +10,9 @@ import NameLogo from "../../Assets/names.png";
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   // تعريف حالة للتحكم في إظهار أو إخفاء حقل الإدخال
   const [showInput, setShowInput] = useState(false);
-  const [productName, setNamePro] = useState("");
+  const [nameProducts, setNamePro] = useState("");
+  const navigate=useNavigate();
+
   // const {productName}=useParams();
   const searchRef = useRef(null); // Reference for the search element
   const sidebarRef = useRef(null); // Reference for the sidebar element
@@ -40,12 +42,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   // Search function
   const submitsearch = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.get(`/${productName}`);
-      setNamePro(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+    const query = nameProducts ? `/Products/${nameProducts}` : "/Products";
+    navigate(query);
   };
   // Close search input if clicked outside
   useEffect(() => {
@@ -98,7 +96,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       // searchRef
       }>
       <button onClick={toggleSidebar} className="close-btn">
-        <FontAwesomeIcon icon={faChevronLeft}   size="small" id="Left" />{" "}
+        <FontAwesomeIcon icon={faChevronLeft}   size="sm" id="Left" />{" "}
       </button>
       <div className="">
         <img src={Logo} alt="Logo" className="logo1" />
@@ -137,8 +135,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <option value="tr"> {t("lang3")} </option>
             </select>
           </form>
-      {/* 
-      /////////////////////////////////   زر البحث
+      
+      {/* /////////////////////////////////   زر البحث */}
       <i className="fas fa-search linksss" onClick={handleSearchClick}></i>
       {showInput && (
         <form onSubmit={submitsearch} className="searchside"  ref={searchRef}>
@@ -150,12 +148,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               type="text"
               placeholder="Search..."
               className= {i18n.language === "ar" ? "inputnamesid arins" : "inputnamesid enins"}
-              value={productName}
+              value={nameProducts}
               onChange={(event) => setNamePro(event.target.value)}
             />
           </div>
         </form>
-      )} */}
+      )}
     </div>
   );
 };

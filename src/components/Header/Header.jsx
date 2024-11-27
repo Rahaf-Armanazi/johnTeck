@@ -5,7 +5,6 @@ import Button from "../btn/Btn";
 import Logo from "../../Assets/logonew.png"; // تأكد من أن المسار صحيح
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // استيراد المكون
 import { faBars } from "@fortawesome/free-solid-svg-icons"; // استيراد الأيقونات
-import axios from "axios";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // استيراد FontAwesome
 import { Link , useNavigate } from "react-router-dom";
 import "./Header.css";
@@ -21,7 +20,7 @@ function Header() {
 
   // تعريف حالة للتحكم في إظهار أو إخفاء حقل الإدخال
   const [showInput, setShowInput] = useState(false);
-  const [productName, setNamePro] = useState("");
+  const [nameProducts, setNamePro] = useState("");
   const navigate=useNavigate();
 
   const searchRef = useRef(null); // Reference for the search element
@@ -33,7 +32,8 @@ function Header() {
   // Search function
   const submitsearch = async (e) => {
     e.preventDefault();
-    navigate(`fsdfdfwe${productName}`);
+    const query = nameProducts ? `/Products/${nameProducts}` : "/Products";
+    navigate(query);
   };
   // Close search input if clicked outside
   useEffect(() => {
@@ -103,8 +103,8 @@ function Header() {
             </select>
           </form>
 
-{/*           
-           /////////////////////////////////    زر البحث 
+          
+           {/* /////////////////////////////////    زر البحث   ////////////////////////*/}
           {showInput && (
             <form onSubmit={submitsearch} className="searchdiv">
               <div className="forsearch">
@@ -116,13 +116,13 @@ function Header() {
                   placeholder="Search..."
                    className={i18n.language === "ar" ? "inputname arinp" : "inputname eninp"}
                     dir="ltr"
-                  value={productName}
+                  value={nameProducts}
                   onChange={(event) => setNamePro(event.target.value)}
                 />
               </div>
             </form>
           )}
-          <i className="fas fa-search linksss" onClick={handleSearchClick}></i> */}
+          <i className="fas fa-search linksss" onClick={handleSearchClick}></i>
         </div>
       </div>
       {/* زر فتح الشريط الجانبي */}
@@ -130,7 +130,7 @@ function Header() {
       {!isSidebarOpen && (
         <Button
           onClick={toggleSidebar}
-          label={<FontAwesomeIcon icon={faBars} size="small" id="hoom" />}
+          label={<FontAwesomeIcon icon={faBars} size="sm" id="hoom" />}
         />
       )}
       {/* الشريط الجانبي */}

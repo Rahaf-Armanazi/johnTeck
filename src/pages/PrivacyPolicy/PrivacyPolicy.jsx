@@ -25,7 +25,7 @@ function PrivacyPolicy() {
   }, [i18n.language]); // Re-run when the language changes
   return (<>
   <Header/>
-    <div className="privacyPolicy">
+    <div className="privacyPolicy"  style={{ flex: "1", margin: "5%" }}>
       <h1 id="H1privacy">{t("Title")}</h1>
       <h6 id="pprivacy">{t("Subtitle")}</h6>
 
@@ -62,7 +62,7 @@ function PrivacyPolicy() {
 
       <h2 className="h2p">{t("Subtitle5")}</h2>
       <p className="text1">
-      {t("p9")}<a href="">info@johntekvalves.com</a>
+      {t("p9")}<a href="mailto:info@johntekvalves.com">info@johntekvalves.com</a>
       </p>
     </div>
     <Footer/>

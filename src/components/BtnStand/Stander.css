@@ -39,13 +39,13 @@
     size: 20%;
   }
   .botton2 {
-    background: linear-gradient(45deg, #4caf50, #81c784);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+      background: linear-gradient(45deg, #4c8aaf, #81c784);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
   }
   .iner{
     padding: 10px 20px;
@@ -53,7 +53,7 @@
   }
   
   .botton2:hover {
-    background: linear-gradient(45deg, #388e3c, #66bb6a);
+    background: linear-gradient(45deg, #9da0ac, #666dbb);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
   }
@@ -65,6 +65,14 @@
   }
   /* جوالات صغيرة */
 @media (width<= 480px) {
+  .iner {
+    top: 83%;
+    margin-top: 0%;
+    right: 65%;
+    position: absolute;
+    padding: 3px 7px;
+    font-size: 7px;
+}
     /* نافذة منبثقة */
 .popup {
     position: fixed;
@@ -105,19 +113,6 @@
   .botton_item{
     size: 20%;
   }
-  .botton2 {
-    background: linear-gradient(45deg, #4caf50, #81c784);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  .iner{
-    padding: 4px;
-    font-size: xx-small;
-}
   .botton2:hover {
     background: linear-gradient(45deg, #388e3c, #66bb6a);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
@@ -129,4 +124,27 @@
     transform: translateY(0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   }
+}
+
+/* جوالات  كبيرة */
+@media (width<= 768px) and (width> 480px) {
+  .iner {
+    top: 82%;
+    margin-top: 0%;
+    right: 66%;
+    position: absolute;
+    padding: 4px 9px;
+    font-size: 13px;
+}
+}
+/* تابليت */
+@media (width<= 1024px) and (width> 768px) {
+  .iner {
+    padding: 7px 16px;
+    font-size: 10px;
+}
+}
+/* حواسيب  */
+@media (width<= 1920px) and (width>=1025px) {
+
 }

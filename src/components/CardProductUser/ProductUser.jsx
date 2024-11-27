@@ -1,75 +1,104 @@
 import React, { useEffect, useState } from "react";
 import "./ProductUser.css";
-import { Link , useLocation } from "react-router-dom";
+// import "./Stander.css";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Stander from "../BtnStand/Stander";
 import { useTranslation } from "react-i18next";
 
 const ProductUser = () => {
   const [infoproCard2, SetIn] = useState([]);
-  const location = useLocation(); // للحصول على استعلام البحث من الـ URL
-  const searchParams = new URLSearchParams(location.search);
-  const searchQuery = searchParams.get("search");
-  const [isTransitioning, setIsTransitioning] = useState(true);
+  const { search } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePdfClick = (e) => {
+    setIsLoading(true);
+    // يسمح بتنزيل الملف بعد التأكد من تحميل الرابط
+    setTimeout(() => setIsLoading(false), 5000); // توقيت اختياري
+  };
+
   const { t, i18n } = useTranslation("Home");
   useEffect(() => {
-    var dir =i18n.language === "ar"?"rtl":"ltr";
-    var lang = i18n.language === "ar"?"ar":i18n.language === "en"? "en" : "tr";
+    var dir = i18n.language === "ar" ? "rtl" : "ltr";
+    var lang =
+      i18n.language === "ar" ? "ar" : i18n.language === "en" ? "en" : "tr";
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
   }, [i18n.language]);
 
   useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const res = await axios.get("/backend/api/products");
-          console.log(res.data);SetIn(res.data);
-          // تصفية المنتجات بناءً على البحث
-        if (searchQuery) {
-          const products = products.filter((product) =>
-            product.EnglishName.toLowerCase().includes(searchQuery.toLowerCase())
+    const fetchData = async () => {
+      try {
+        if (search) {
+          // https://johntekvalves.com/backend/api/products
+          const res = await axios.get(
+            `https://johntekvalves.com/backend/api/products/${search}`
           );
-          SetIn(products);
+          console.log(res.data);
+          SetIn(Array.isArray(res.data) ? res.data : [res.data]);
+        } else {
+          const res = await axios.get(
+            "https://johntekvalves.com/backend/api/products"
+          );
+          SetIn(res.data);
         }
-          
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      fetchData();
-    }
-  , [searchQuery]);
+      } catch (err) {
+        console.log("the error is", err);
+      }
+    };
+    fetchData();
+  }, [search]);
 
-  const showinfoCard2 = infoproCard2?.map((e) => (
-    <div key={e.id} className="Showcard">
+  const showinfoCard2 = infoproCard2?.map((e, index) => (
+    <div key={e.id || index} className="Showcard">
       <div className="C1user">
         <img
           className="imageUser"
-          src={`/backend/storage/products/images/${e.image}`}
+          src={`https://johntekvalves.com/backend/storage/products/images/${e.image}`}
           alt="helooo i am not heer"
         />
-        {/* <Stander/> */}
+        {/* عرض الـ Stander فقط إذا كان المنتج يحتوي على بيانات الـ standard */}
       </div>
 
       <div className="C2user">
         <div className="productdetailsuser">
           <h1 className="productNameuser">{e.EnglishName}</h1>
           <div className="PIuser">
-            <p className="productdeDescriptionuser">{i18n.language === "ar" ?e.ArabicDescription:i18n.language === "en" ?e.EnglishDescription : e.TurkishDescription}</p>
-            <Link to={`/backend/storage/products/pdfs/${e.pdf}`}>
-             <img
-              className="pdfuser"
-              src={require("../../Assets/images__3_-removebg-preview.png")}
-              alt="helooo i am not heer"
-            />
-            </Link>
+            <p className="productdeDescriptionuser">
+              {i18n.language === "ar"
+                ? e.ArabicDescription
+                : i18n.language === "en"
+                ? e.EnglishDescription
+                : e.TurkishDescription}
+            </p>
+            <div>
+            <a
+              href={`https://johntekvalves.com/backend/storage/products/pdfs/${e.pdf}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handlePdfClick}
+            >
+              {isLoading ? (
+                <span>Loading PDF...</span>
+              ) : (
+                <img
+                  className="pdfuser"
+                  src={require("../../Assets/images__3_-removebg-preview.png")}
+                  alt="helooo i am not heer"
+                />
+              )}
+            </a>
+            {e.standard !== "no information" && (
+                <Stander standardData={e.standard} />
+              )}
+            </div>
           </div>
         </div>
 
-        <p className="C3user">
+        <p className="C3user" dir="ltr">
           <Link to="/contactUs" className="linuser">
-            Contact Us 
+            Contact Us
           </Link>
           to order & inquire about this product
         </p>
@@ -80,7 +109,6 @@ const ProductUser = () => {
 };
 
 export default ProductUser;
-
 
 //   // Search function
 //   const submitsearch = async (e) => {

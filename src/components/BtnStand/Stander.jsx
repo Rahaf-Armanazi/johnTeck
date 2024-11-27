@@ -1,34 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Stander.css";
 
-const Stander = () => {
-  const [data, setData] = useState(null);
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
-  const [showData, setShowData] = useState(false);
-
-  const botton2 = () => {
-    const mockData = {
-      id: 1,
-      name: "Standrres",
-      description: "This is a sample description for testing.",
-    };
-
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(mockData), 1000); // تأخير 1 ثانية
-    });
-  };
-
-  useEffect(() => {
-    const getData = async () => {
-      const result = await botton2();
-      if (result) {
-        setData(result);
-        setIsButtonVisible(true);
-      }
-    };
-
-    getData();
-  }, []);
+const Stander = (props) => {
+  const [showData, setShowData] = useState(false) ;// تظهر وتخفي الداتا 
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
@@ -43,7 +17,6 @@ const Stander = () => {
   return (
     <div className="botton_item" onClick={handleHideData}>
       {/* عرض الزر فقط إذا كانت حالة isButtonVisible true */}
-      {isButtonVisible && (
         <button
           className="botton2 iner"
           type="submit"
@@ -51,21 +24,15 @@ const Stander = () => {
         >
           Standers
         </button>
-      )}
 
       {/* عرض النافذة المنبثقة */}
-      {showData && data && (
+      {showData && props.standardData && (
         <>
           {/* نافذة منبثقة */}
           <div className="popup" onClick={(e) => e.stopPropagation()}>
             <button onClick={handleHideData}>&times;</button>
-            <div style={{ marginTop: "10px", textAlign: "left" }}>
-              <p>
-                <strong>Data Name:</strong> {data.name}
-              </p>
-              <p>
-                <strong>Description:</strong> {data.description}
-              </p>
+            <div style={{ marginTop: "10px", textAlign: "left" }}><h2>Standard Information</h2>
+              <p>{props.standardData}</p> 
             </div>
           </div>
 
@@ -73,9 +40,6 @@ const Stander = () => {
           <div className="overlay" onClick={handleHideData}></div>
         </>
       )}
-
-      {/* رسالة تحميل أثناء انتظار البيانات */}
-      {!isButtonVisible && !data && <p>Loading data...</p>}
     </div>
   );
 };

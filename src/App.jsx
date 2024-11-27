@@ -11,6 +11,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Certificates from "./pages/Certificates/Certificates";
 import { Suspense } from "react";
+import MainDash from "./components/MainDash/MainDash";
+import DashBoardCertificate from "./components/DashBoardCertificate/DashBoardCertificate";
 
 export default function App() {
   const location = useLocation();
@@ -29,12 +31,15 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/Dashboard" element={<DashBoard />} />
+        <Route path="/Dashboardproducts" element={<DashBoard />} />
+        <Route path="/Dashboardcertificates" element={<DashBoardCertificate />} />
         <Route path="/Products" element={<Product />} />
+        <Route path="/Products/:search" element={<Product />} />
         <Route path="/Terms" element={<TermsOfService />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/ContactUs" element={<ContactUs/>}/>
         <Route path="/Certificates" element={<Certificates/>}/>
+        <Route path="/Main-DashBoard-RAYS" element={<MainDash />} />
       </Routes>
     </div>
     </Suspense>

@@ -1,5 +1,22 @@
 .cerA {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
+.cer1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.cer2 {
+  object-fit: fill;
+}
+@media (width<=480px) {
+  .cer2 {
+    /* position: absolute; */
+    /* right: 5%; */
+    width: 266px;
+    height: 421px;
+  }
 }

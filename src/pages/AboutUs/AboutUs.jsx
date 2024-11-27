@@ -10,7 +10,9 @@ function AboutUs() {
   return (
     <div className="bodyAbout">
       <Header/>
+      <div className='about'>
       <About/>
+      </div>
       <Footer/>
     </div>
   

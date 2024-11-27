@@ -45,7 +45,7 @@ const AddProduct = () => {
         overlayClassName="modal-overlay"
       >
         <InfoProd h1="Add New Product" 
-        endApi="AddProducts"
+        endApi="storage"
         closeModal={closeModal}
         addProductToList={addProductToList} // تمرير الدالة لإضافة المنتج الجديد
         navigate={navigate}
