@@ -129,7 +129,7 @@ function Home() {
             </h2>
           </div>
           <Link to="/Products">
-            <button className="btn1">{t("button")}</button>
+            <button className={i18n.language === "ar" ? "arbu" : "btn1"}>{t("button")}</button>
           </Link>
         </div>
       </div>

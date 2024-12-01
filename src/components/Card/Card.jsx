@@ -24,7 +24,7 @@ const Card = () => {
   // عرض البيانات من الداتا
   const [productinfo, setproductInfo] = useState([]);
   const getType = async () => {
-    const response = await axios.get("http://172.17.17.38:8000/api/products");
+    const response = await axios.get("http://192.168.43.2022:8000/api/products");
     setproductInfo(response.data);
   };
 
@@ -45,14 +45,14 @@ const Card = () => {
       <p>{i.id}</p>
       <img
         className="imageDashboard"
-        src={`http://172.17.17.38:8000/storage/products/images/${i.image}`}
+        src={`http://192.168.43.202:8000/storage/products/images/${i.image}`}
         alt="Product Image"
       />
       <div className="productdetails">
         <h1 className="productName">{i.EnglishName}</h1>
         <div className="PI">
           <p className="productdeDescription">{i.EnglishDescription}</p>
-          <Link to={`http://172.17.17.38:8000/storage/products/pdfs/${i.pdf}`}>
+          <Link to={`http://192.168.43.202:8000/storage/products/pdfs/${i.pdf}`}>
             <img
               className="pdfuser"
               src={require("../../Assets/images__3_-removebg-preview.png")}
@@ -93,6 +93,7 @@ const Card = () => {
             DescriptionEn={selectedProduct.EnglishDescription}
             DescriptionTr={selectedProduct.TurkishDescription}
             DescriptionAr={selectedProduct.ArabicDescription}
+            standard={selectedProduct.standard}
             image={selectedProduct.image}
             pdf={selectedProduct.pdf}
             endApi={

@@ -32,7 +32,7 @@
   border-radius: 5px;
 }
 
-.forsearch {
+.forsearchH {
   display: flex;
   align-items: center;
 }
@@ -101,27 +101,39 @@
     border-radius: 5px;
   }
   @media (width<= 480px) {
-    #hoom{
-margin: 0px 0px 9px -20px;;
+    #hoom {
+      margin: 0px 0px 9px -20px;
+    }
+    .linksss {
+      text-decoration: none;
+      font-weight: bolder;
+      font-size: 11px;
     }
   }
-  @media(width <=1024px) and (width>768px){
-    #hoom{
+  @media (width <=768px) and (width>480px) {
+    .linksss {
+      text-decoration: none;
+      font-weight: bolder;
+      font-size: 11px;
+    }
+  }
+  @media (width <=1024px) and (width>768px) {
+    #hoom {
       margin: -9px 2px 25px -35px;
     }
     .linksss {
-    text-decoration: none;
-    color: #333;
-    font-weight: bolder;
-    font-size: 11px;
-    padding: 28px 5px 28px 2px;
-    transition: background-color 0.3s, color 0.3s;}
+      text-decoration: none;
+      color: #333;
+      font-size: 11px;
+      padding: 9px 5px 8px 2px;
+      transition: background-color 0.3s, color 0.3s;
+    }
   }
-  @media (width>=1025px) and (width<= 1920px)  {
-.linksss {
-    text-decoration: none;
-    color: #333;
-    padding: 4px 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
+  @media (width>=1025px) and (width<= 1920px) {
+    .linksss {
+      text-decoration: none;
+      color: #333;
+      padding: 4px 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
   }

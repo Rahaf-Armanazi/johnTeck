@@ -42,6 +42,7 @@
 
 .Showcard .productNameuser {
   width: 100%;
+  text-align: center;
   height: auto;
   display: flex;
   justify-content: center;

@@ -107,7 +107,7 @@ function Header() {
            {/* /////////////////////////////////    زر البحث   ////////////////////////*/}
           {showInput && (
             <form onSubmit={submitsearch} className="searchdiv">
-              <div className="forsearch">
+              <div className="forsearchH">
                 <button type="submit" className={i18n.language === "ar" ? "ok arok" : "ok enok"}>
                 {t("searchButton")}
                 </button>

@@ -31,8 +31,8 @@ const Stander = (props) => {
           {/* نافذة منبثقة */}
           <div className="popup" onClick={(e) => e.stopPropagation()}>
             <button onClick={handleHideData}>&times;</button>
-            <div style={{ marginTop: "10px", textAlign: "left" }}><h2>Standard Information</h2>
-              <p>{props.standardData}</p> 
+            <div style={{ marginTop: "10px", textAlign: "left" }}><h2 className="Stand1">Standard Information</h2>
+              <p className="Stand2">{props.standardData}</p> 
             </div>
           </div>
 

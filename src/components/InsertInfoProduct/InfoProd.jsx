@@ -1,18 +1,41 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faSave, faImage, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTimes,
+  faSave,
+  faImage,
+  faFilePdf,
+} from "@fortawesome/free-solid-svg-icons";
 
 const InfoProd = (props) => {
-  const { closeModal, endApi, EnglishName: initialName, DescriptionEn: initialDescriptionEn, DescriptionTr:initialDescriptionTr,DescriptionAr:initialDescriptionAr, standard:initialStand,image: initialImage, pdf: initialPdf ,navigate ,addProductToList } = props;
-  const [EnglishName, setName] = useState(initialName  || "");
-  const [EnglishDescription, setDescriptionEn] = useState(initialDescriptionEn || "");
-  const [TurkishDescription, setDescriptionTr] = useState(initialDescriptionTr || "");
-  const [ArabicDescription, setDescriptionAr] = useState(initialDescriptionAr || "");
-  const [standard, setStandEn] = useState(initialStand|| "");
+  const {
+    closeModal,
+    endApi,
+    EnglishName: initialName,
+    DescriptionEn: initialDescriptionEn,
+    DescriptionTr: initialDescriptionTr,
+    DescriptionAr: initialDescriptionAr,
+    standard: initialStand,
+    image: initialImage,
+    pdf: initialPdf,
+    navigate,
+    addProductToList,
+  } = props;
+  const [EnglishName, setName] = useState(initialName || "");
+  const [EnglishDescription, setDescriptionEn] = useState(
+    initialDescriptionEn || ""
+  );
+  const [TurkishDescription, setDescriptionTr] = useState(
+    initialDescriptionTr || ""
+  );
+  const [ArabicDescription, setDescriptionAr] = useState(
+    initialDescriptionAr || ""
+  );
+  const [standard, setStandEn] = useState(initialStand || "");
   const [image, setImage] = useState(null); // تعديل هذه الحالة
   const [pdf, setPdf] = useState(null);
-  
+
   // في حال كان هناك صورة أو ملف PDF موجودين، نقوم بتفعيل الـ checkbox
   const [imageUploaded, setImageUploaded] = useState(!!initialImage); // إذا كانت الصورة موجودة، نعرض الـ checkbox
   const [pdfUploaded, setPdfUploaded] = useState(!!initialPdf); // إذا كان ملف الـ PDF موجود، نعرض الـ checkbox
@@ -40,8 +63,15 @@ const InfoProd = (props) => {
     } else {
       setPdfUploaded(false); // لا يوجد ملف PDF مبدئي
     }
-  }, [initialName, initialDescriptionEn,initialDescriptionTr,
-    initialDescriptionAr,initialStand, initialImage, initialPdf]);
+  }, [
+    initialName,
+    initialDescriptionEn,
+    initialDescriptionTr,
+    initialDescriptionAr,
+    initialStand,
+    initialImage,
+    initialPdf,
+  ]);
 
   const handleFileChange = (e, setFile, setUploaded) => {
     const file = e.target.files[0];
@@ -58,21 +88,22 @@ const InfoProd = (props) => {
     formData.append("TurkishDescription", TurkishDescription);
     formData.append("ArabicDescription", ArabicDescription);
     formData.append("standard", standard);
-    
+
     // التأكد من أن الصورة والـ PDF هما كائنات ملفات وليس نصوص
     if (image instanceof File) {
       formData.append("image", image);
     }
-  
+
     if (pdf instanceof File) {
       formData.append("pdf", pdf);
     }
-  
+
     console.log([...formData]);
-  
+
     try {
-      const res = await axios.post(`
-        http://172.17.17.38:8000/api/${endApi}`,
+      const res = await axios.post(
+        `
+        http://192.168.43.202:8000/api/${endApi}`,
         formData,
         {
           headers: {
@@ -85,20 +116,20 @@ const InfoProd = (props) => {
         const newProduct = res.data; // نحصل على المنتج الجديد من الاستجابة
         addProductToList(newProduct);
         console.log(newProduct);
-  // إغلاق النافذة المنبثقة
-  closeModal();
+        console.log(res.request);
+        // إغلاق النافذة المنبثقة
+        closeModal();
         // الانتقال إلى صفحة Dashboard
-        navigate("/Dashboard", { replace: true });
-  
-        }
+        navigate("/Dashboardproducts", { replace: true });
+      }
     } catch (err) {
       console.log(err); // طباعة الخطأ في وحدة التحكم
-    }    
+    }
   };
-  
+
   return (
     <div>
-      <div className="p1" >
+      <div className="p1">
         <div className="p4">
           <label id="p3"> Product Name :</label>
           <input
@@ -109,7 +140,7 @@ const InfoProd = (props) => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        
+
         <div className="p4">
           <label id="p4">Product Description English:</label>
           <input
@@ -160,7 +191,9 @@ const InfoProd = (props) => {
             <div className="upload-box">
               <input
                 type="file"
-                onChange={(e) => handleFileChange(e, setImage, setImageUploaded)}
+                onChange={(e) =>
+                  handleFileChange(e, setImage, setImageUploaded)
+                }
               />
               <div>
                 <FontAwesomeIcon
@@ -168,7 +201,9 @@ const InfoProd = (props) => {
                   fontSize="100px"
                   style={{ marginTop: "10%", color: "rgb(135 148 171)" }}
                 />
-                <p style={{ marginTop: "-3%", marginLeft: "6%" }}>Select Image</p>
+                <p style={{ marginTop: "-3%", marginLeft: "6%" }}>
+                  Select Image
+                </p>
               </div>
             </div>
             {/* إظهار الـ checkbox إذا كانت الصورة قد تم تحميلها مسبقًا أو تم رفع صورة جديدة */}
@@ -180,7 +215,9 @@ const InfoProd = (props) => {
             )}
           </div>
           <div className="pdf">
-            <span style={{ marginRight: "8%", marginTop: "13%" }}>Pdf file</span>
+            <span style={{ marginRight: "8%", marginTop: "13%" }}>
+              Pdf file
+            </span>
             <div className="upload-box">
               <input
                 type="file"
@@ -191,7 +228,11 @@ const InfoProd = (props) => {
                 <FontAwesomeIcon
                   icon={faFilePdf}
                   fontSize="90px"
-                  style={{ marginTop: "20%", marginLeft: "5%", color: "rgb(135 148 171)" }}
+                  style={{
+                    marginTop: "20%",
+                    marginLeft: "5%",
+                    color: "rgb(135 148 171)",
+                  }}
                 />
                 <p style={{ marginTop: "7%", marginLeft: "6%" }}>Select File</p>
               </div>

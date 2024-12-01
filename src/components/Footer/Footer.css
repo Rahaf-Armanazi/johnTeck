@@ -15,6 +15,11 @@
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
+.linkk:hover {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
 .d1 {
   line-height: 14px;
   /* background-color: blue; */
@@ -24,8 +29,13 @@
   justify-content: space-between;
   padding: 0 20px;
 }
+.lastfooter h6{
+  margin: 2% 0%;
+}
 .h3footer{
-    word-wrap:break-word ;
+  line-height: 1.4;
+  font-size: 1%;
+  white-space: nowrap;
 }
 .em{
   font-size: small;
@@ -37,11 +47,10 @@
   .allfooter {
     display: flex;
     justify-content: space-between;
-    padding: 0 2%;
+    padding: 2% 2% 0 2%;
 }
 .h3footer {
-  word-wrap: break-word;
-  font-size: x-small;
+  font-size: 1%;
 }
 .em {
   margin: 0% 0%;
@@ -62,11 +71,11 @@
   .allfooter {
     display: flex;
     justify-content: space-between;
-    padding: 0 2%;
+    padding: 2% 2% 0% 2%;
 }
 .h3footer {
-  word-wrap: break-word;
-  font-size: x-small;
+  margin: 0%;
+  font-size: small;
 }
 .em {
   margin: 1% 0%;
@@ -86,14 +95,14 @@
   .allfooter {
     display: flex;
     justify-content: space-between;
-    padding: 0 4%;
+    padding: 2% 2% 0% 2%;
 }
 .h3footer {
-  word-wrap: break-word;
-  font-size: 18px;
+  margin: 0%;
+  font-size: small
 }
 .em{
-  margin:7% 0%;
+  margin: 2% 0%;
   font-size: 11px;
 }
 .top{
@@ -110,11 +119,14 @@
   .allfooter {
     display: flex;
     justify-content: space-between;
-    padding: 0 4%;
+    padding: 1% 2% 0% 2%;
 }
 .h3footer {
-  word-wrap: break-word;
+  margin: 0%;
   font-size: 21px;
+}
+.lastfooter h6 {
+  margin: 0% 0% 1% 0%;
 }
 .em {
   margin: 7% 0%;

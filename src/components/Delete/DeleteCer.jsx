@@ -4,7 +4,9 @@ import axios from "axios";
 const DeleteCer = (props) => {
   const deleteprod = async (id) => {
     try {
-      const req = await axios.post(`http://172.17.17.38:8000/api/delete`, {
+      const req = await axios.post("http://192.168.43.202:8000/api/deletecertificates"
+      // (`http://172.17.17.38:8000/api/delete`
+        , {
         id,
       });
       console.log("Deleted successfully:", req.data); // تحقق من الاستجابة
@@ -16,8 +18,7 @@ const DeleteCer = (props) => {
   };
 
   return (
-    <div>https://chatgpt.com/c/67458fb7-82e0-8002-8f84-7e2e5fb5482e
-        http://172.17.17.38:8000/api/products
+    <div>
       <h1> Are you sure you want top delete this Certificate ???{props.id}</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <button

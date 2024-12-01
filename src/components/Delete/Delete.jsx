@@ -5,7 +5,7 @@ export const Delete = (props) => {
   const deleteprod = async (id) => {
     try {
       const req = await axios.post(
-        `http://172.17.17.38:8000/api/delete`,{id}
+        `http://192.168.43.108:8000/api/delete`,{id}
       );
       console.log("Deleted successfully:", req.data); // تحقق من الاستجابة
       props.getType();

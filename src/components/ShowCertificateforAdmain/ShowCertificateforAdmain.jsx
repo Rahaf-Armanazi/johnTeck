@@ -7,28 +7,15 @@ import "./ShowCertificateforAdmain.css";
 import "../../pages/Certificates/Certificates.css";
 import DeleteCer from "../Delete/DeleteCer";
 
-const ShowCertificateforAdmain = () => {
-    const [selectedCer, setSelectedCer] = useState(null); // حالة المنتج المختار
-    // تعريف دوال فتح وإغلاق المودال للحذف
+const ShowCertificateforAdmain = ({cerinfo, getCer}) => {
+  const [selectedCer, setSelectedCer] = useState(null); // حالة المنتج المختار
+  // تعريف دوال فتح وإغلاق المودال للحذف
   const [modalOpen, setModalOpen] = useState(false);
   const opendelete = (product) => {
     setSelectedCer(product);
     setModalOpen(true);
   };
   const closedelete = () => setModalOpen(false);
-
-  // عرض البيانات من الداتا
-  const [cerinfo, setcerInfo] = useState([]);
-  const getCer = async () => {
-    const response = await axios.get
-    // ("http://172.17.17.38:8000/api/products");
-    ("https://johntekvalves.com/backend/api/certificates");
-    setcerInfo(response.data);
-  };
-
-  useEffect(() => {
-    getCer();
-  }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const handlePdfClick = (e) => {
@@ -37,30 +24,34 @@ const ShowCertificateforAdmain = () => {
     setTimeout(() => setIsLoading(false), 5000); // توقيت اختياري
   };
 
-  const ShowCer=cerinfo?.map((i)=>(
-    <div className="cer1">
-    <a
-      href={`https://johntekvalves.com/backend/storage/Certificates/pdf/${i.pdf}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={handlePdfClick}
-    >
-      {isLoading ? (
-        <span>Loading PDF...</span>
-      ) : (
-        <img
-          className="cer2"
-          src={`https://johntekvalves.com/backend/storage/Certificates/image/${i.image}`}
-          alt="helooo i am not heer"
-        />
-      )}
-    </a>
-  </div>
-  ))
+  const ShowCer = cerinfo?.map((i) => (
+    <div className="cer1" key={i.id}>
+      <a
+        href={`http://192.168.43.202:8000/storage/Certificates/pdf/${i.pdf}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handlePdfClick}
+      >
+        {isLoading ? (
+          <span>Loading PDF...</span>
+        ) : (
+          <img
+            className="cer2"
+            src={`http://192.168.43.202:8000/storage/Certificates/image/${i.image}`}
+            alt="hellooo i am not heer"
+          />
+        )}
+      </a>
+      <div className="iconimage" onClick={() => opendelete(i)}>
+        <FontAwesomeIcon icon={faTrash} size="4x" />
+      </div>
+      <p className="nameicons2">Delete</p>
+    </div>
+  ));
   return (
     <div>
-       {ShowCer} 
-       <Modal
+      {ShowCer}
+      <Modal
         isOpen={modalOpen}
         contentLabel="delete Product Modal"
         className="popupWindow"
@@ -77,7 +68,7 @@ const ShowCertificateforAdmain = () => {
         )}
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default ShowCertificateforAdmain
+export default ShowCertificateforAdmain;
