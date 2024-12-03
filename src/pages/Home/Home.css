@@ -1,3 +1,11 @@
+.homepage{
+  display: flex;
+  flex-direction: column; /* ترتيب العناصر عموديًا */
+  min-height: 100vh;
+}
+.hh{
+  flex: 1;
+}
 .slider-container {
   position: relative;
   width: 600px;
@@ -9,12 +17,20 @@
 .slider-wrapper {
   display: flex;
   transition: transform 2s ease-in-out;
+  width: 100%;
+  height:150px;
+  /* overflow: hidden; */
+  align-items: center;
+  justify-content: center;
 }
 
 .slider-image {
-  width: 100%;
-  height: auto;
+  /* width: 100%; Make the image fit the width of the container */
+  /* height: 100%; Make the image fit the height of the container */
+  object-fit:fill;
   border-radius: 10px;
+  width: 100%;
+  height: 100%;
   flex-shrink: 0;
 }
 .ar {
@@ -276,7 +292,7 @@
   .logooo {
     justify-content: center;
     padding-left: 10%;
-    padding-top: 11%;
+    padding-top: 22%;
     padding-bottom: 5%;
     display: flex;
     width: 75%;
@@ -358,6 +374,15 @@
     max-height: 520px;
     object-fit: cover;
     border-radius: 4cap;
+  }
+  .slider-wrapper {
+    display: flex;
+    transition: transform 2s ease-in-out;
+    width: 100%;
+    max-height:420px;
+    /* overflow: hidden; */
+    align-items: center;
+    justify-content: center;
   }
 }
 

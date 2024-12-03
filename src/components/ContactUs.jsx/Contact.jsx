@@ -11,25 +11,29 @@ const Contact = () => {
       <div className="contact-item">
         <FontAwesomeIcon icon={faFacebookSquare} size="2x" className="icon" />
         <p className="contact-title">Facebook</p>
-        <Link to="https://www.facebook.com/profile.php?id=61556634712053" className="contact-link"> facebook.com</Link>
+        <a target="_blank"
+        rel="noopener noreferrer" href="https://www.facebook.com/profile.php?id=61556634712053" className="contact-link"> facebook.com</a>
       </div>
 
       <div className="contact-item">
         <FontAwesomeIcon icon={faInstagram} size="2x" className="icon" />
         <p className="contact-title">Instagram</p>
-        <Link to="https://www.instagram.com/johntekvalves/" className="contact-link">instagram.com/johntekvalves/ </Link>
+        <a  target="_blank"
+        rel="noopener noreferrer" href="https://www.instagram.com/johntekvalves/" className="contact-link">instagram.com/johntekvalves/ </a>
       </div>
 
       <div className="contact-item">
         <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
         <p className="contact-title">Email</p>
-        <Link to="mailto:info@johntekvalves.com" className="contact-link">info@johntekvalves.com </Link>
+        <a  target="_blank"
+        rel="noopener noreferrer" href="mailto:info@johntekvalves.com" className="contact-link">info@johntekvalves.com </a>
       </div>
 
       <div className="contact-item">
         <FontAwesomeIcon icon={faPhone} size="2x" className="icon" />
         <p className="contact-title">Phone</p>
-        <Link to="tel:+0981398162735" className="contact-link">+0981398162735 </Link>
+        <a  target="_blank"
+        rel="noopener noreferrer" href="tel:+0981398162735" className="contact-link">+0981398162735 </a>
       </div>
     </div>
   );

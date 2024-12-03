@@ -16,9 +16,9 @@ function TermsOfService() {
   }, [i18n.language]);
 
   return (
-    <div>
+    <div className="termsall">
       <Header />
-      <div className="termsOfService"  style={{ flex: "1", margin: "5%" }}>
+      <div className="termsOfService"  style={{ flex: "1"}}>
         <h1 id="H1termsOfService">{t("h")}</h1>
         <h6 id="ptermsOfService">{t("hh")}</h6>
         <p className="text1">{t("p1")}</p>

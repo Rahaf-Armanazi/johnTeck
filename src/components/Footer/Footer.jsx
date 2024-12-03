@@ -55,7 +55,10 @@ function Footer() {
       </div>
       <div className="lastfooter">
         <h6>JohntekValves.com © 2024 All Rights Reserved. </h6>
-        <h6>made by RAYS_Tech</h6>
+        <h6>S.L.Camino Pascualeta 23,46200 Paiporta , Valencia ,Spain</h6>
+        <h6>made by <a href="www.example.com"target="_blank"
+              rel="noopener noreferrer" style={{color:"red"}}
+            > RAYS_Tech </a> </h6>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ function MainDash() {
   const req=async(e)=>{
     e.preventDefault();
     try{
-      const r=await axios.post("http://172.17.17.38:8000/api/admin/login",{password});
+      const r=await axios.post("http://192.168.43.202:8000/api/admin/login",{password});
       console.log(r.status)
       if(r.status===200){
         // افترض أن التوكن قادم في response.data.token
@@ -21,7 +21,7 @@ function MainDash() {
         // تخزين التوكن في الكوكيز
         Cookies.set("authToken", token, { expires: 7 }); // يتم التخزين لمدة 7 أيام
 
-        navigate("/Dashboard")
+        navigate("/Dashboardproducts")
       }
     }
     catch(error){

@@ -9,7 +9,6 @@ const AddCer = ({onAdd , close , navigate}) => {
   const [showModal, setShowModal] = useState(false);
   const [image, SetImage] = useState("");
   const [pdf, SetPdf] = useState("");
-  // const [Certifi_info, setCertifi] = useState([]);
 
   const handleOpenModal = () => setShowModal(true);
 
@@ -37,7 +36,6 @@ const AddCer = ({onAdd , close , navigate}) => {
         const newCer = res.data; // نحصل على المنتج الجديد من الاستجابة
         onAdd(newCer);
         close();
-        // handleCloseModal();
         // الانتقال إلى صفحة Dashboard
         navigate("/Dashboardcertificates", { replace: true });
       }

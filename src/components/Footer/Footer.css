@@ -112,7 +112,6 @@
   font-size: 17px;
   display: flex;
   justify-content: space-between;
-  padding: 0 4%;
 }
 }
 @media (width<= 1920px) and (width>=1025px) {
@@ -139,6 +138,5 @@
   font-size: 18px;
   display: flex;
   justify-content: space-between;
-  padding: 0 4%;
 }
 }

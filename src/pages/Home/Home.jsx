@@ -3,18 +3,21 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Home.css";
 import "../../components/Footer/Footer.css";
-// import footer from "../../components/footer/Foote";
 import Logo from "../../Assets/logo.png"; // تأكد من أن المسار صحيح
 import names from "../../Assets/names.png";
 import { Link } from "react-router-dom";
-import Home21 from "../../Assets/12.jpg";
-import Home22 from "../../Assets/big4.jpg";
-import Home23 from "../../Assets/About Us.png";
+import Home21 from "../../Assets/pro1.jpg";
+import Home22 from "../../Assets/pro2.jpg";
+import Home23 from "../../Assets/pro3.jpg";
+import Home24 from "../../Assets/pro4.jpg";
+import Home25 from "../../Assets/pro5.jpg";
+import Home26 from "../../Assets/pro6.jpg";
+import Home27 from "../../Assets/pro7.jpg";
 import { useTranslation } from "react-i18next";
 
 function Home() {
 
-  const images = [Home21, Home22, Home23];
+  const images = [Home21, Home22, Home23, Home24, Home25, Home26, Home27];
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
@@ -27,6 +30,7 @@ function Home() {
 
     return () => clearInterval(interval);
   }, []);
+
   const goToNextSlide = () => {
     if (currentIndex === totalImages.length - 1) {
       setIsTransitioning(false);
@@ -36,6 +40,7 @@ function Home() {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
+
   const goToPrevSlide = () => {
     if (currentIndex === 0) {
       setIsTransitioning(false);
@@ -45,6 +50,7 @@ function Home() {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
+
   const handleTransitionEnd = () => {
     if (currentIndex === 0) {
       setIsTransitioning(false);
@@ -54,6 +60,8 @@ function Home() {
       setCurrentIndex(1);
     }
   };
+  // https://chatgpt.com/c/67458fb7-82e0-8002-8f84-7e2e5fb5482e
+  // http://ncaq-gov.sy/NewsCategory.aspx?CategoryID=4
 
   const { t, i18n } = useTranslation("Home");
   useEffect(() => {
@@ -74,9 +82,11 @@ function Home() {
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
   }, [i18n.language]); // Re-run when the language changes
- return (
+ 
+  return (
     <div className="homepage">
       <Header />
+      <div className="hh">
       <div className={i18n.language === "ar" ? "logooo ar" : "logooo en"} dir="ltr">
         <img src={Logo} alt="Logo" className="logoimg1" />
         <img src={names} alt="name" className="name1" />
@@ -91,8 +101,9 @@ function Home() {
         {t("font-the-h1")}
       </h2>
       <div className="imgshome slider-container">
-        <div className="imgshomeall ">
-          <div dir="ltr"
+        <div className="imgshomeall">
+          <div
+            dir="ltr"
             className="slider-wrapper"
             style={{
               transform: `translateX(-${currentIndex * 100}%)`,
@@ -120,7 +131,7 @@ function Home() {
       
       <div className="imgshome div222">
         <div className={i18n.language === "ar" ? "half pppppp arh" : "half pppppp enh"}>
-          <img src={require("../../Assets/big4.jpg")} alt="منتج تاني" />
+          <img src={require("../../Assets/pro6.jpg")} alt="منتج تاني" />
         </div>
         <div className="half2 pppppp">
           <div>
@@ -132,6 +143,7 @@ function Home() {
             <button className={i18n.language === "ar" ? "arbu" : "btn1"}>{t("button")}</button>
           </Link>
         </div>
+      </div>
       </div>
       <Footer />
     </div>

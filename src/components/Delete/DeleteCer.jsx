@@ -4,7 +4,7 @@ import axios from "axios";
 const DeleteCer = (props) => {
   const deleteprod = async (id) => {
     try {
-      const req = await axios.post("http://192.168.43.202:8000/api/deletecertificates"
+      const req = await axios.post("http://192.168.43.86:8000/api/deletecertificates"
       // (`http://172.17.17.38:8000/api/delete`
         , {
         id,

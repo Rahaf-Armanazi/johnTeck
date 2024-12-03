@@ -24,7 +24,7 @@ const Card = () => {
   // عرض البيانات من الداتا
   const [productinfo, setproductInfo] = useState([]);
   const getType = async () => {
-    const response = await axios.get("http://192.168.43.2022:8000/api/products");
+    const response = await axios.get("http://192.168.43.202:8000/api/products");
     setproductInfo(response.data);
   };
 

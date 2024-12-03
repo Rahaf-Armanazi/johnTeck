@@ -7,7 +7,7 @@ const Product = () => {
   return (
     <div className='app-container'>
       <Header/>
-      <div style={{flex:"1" ,marginTop:"3%"}}>
+      <div className='ss'>
       <ProductUser/>
       </div> 
       <Footer/>

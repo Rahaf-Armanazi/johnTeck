@@ -23,9 +23,9 @@ function PrivacyPolicy() {
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
   }, [i18n.language]); // Re-run when the language changes
-  return (<>
+  return (<div className="privall">
   <Header/>
-    <div className="privacyPolicy"  style={{ flex: "1", margin: "5%" }}>
+    <div className="privacyPolicy"  style={{ flex: "1"}}>
       <h1 id="H1privacy">{t("Title")}</h1>
       <h6 id="pprivacy">{t("Subtitle")}</h6>
 
@@ -66,7 +66,7 @@ function PrivacyPolicy() {
       </p>
     </div>
     <Footer/>
-    </>
+    </div>
   );
 }
 

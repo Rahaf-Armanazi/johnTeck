@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./ProductUser.css";
-// import "./Stander.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,25 +9,19 @@ import { useTranslation } from "react-i18next";
 const ProductUser = () => {
   const [infoproCard2, SetIn] = useState([]);
   const { search } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handlePdfClick = (e) => {
-    setIsLoading(true);
-    // يسمح بتنزيل الملف بعد التأكد من تحميل الرابط
-    setTimeout(() => setIsLoading(false), 5000); // توقيت اختياري
-  };
-
-  const { t, i18n } = useTranslation("Home");
+  const { t, i18n } = useTranslation("prouser");
   useEffect(() => {
     var dir = i18n.language === "ar" ? "rtl" : "ltr";
-    var lang =
-      i18n.language === "ar" ? "ar" : i18n.language === "en" ? "en" : "tr";
+    var lang =i18n.language === "ar" ? "ar" : i18n.language === "en" ? "en" : "tr";
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
   }, [i18n.language]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true); // بداية التحميل
       try {
         if (search) {
           // https://johntekvalves.com/backend/api/products
@@ -46,9 +39,20 @@ const ProductUser = () => {
       } catch (err) {
         console.log("the error is", err);
       }
+      finally{
+        setIsLoading(false); // بداية التحميل
+      }
     };
     fetchData();
   }, [search]);
+
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <p>Loading products, please wait...</p>
+      </div>
+    );
+  }
 
   const showinfoCard2 = infoproCard2?.map((e, index) => (
     <div key={e.id || index} className="Showcard">
@@ -58,7 +62,6 @@ const ProductUser = () => {
           src={`https://johntekvalves.com/backend/storage/products/images/${e.image}`}
           alt="helooo i am not heer"
         />
-        {/* عرض الـ Stander فقط إذا كان المنتج يحتوي على بيانات الـ standard */}
       </div>
 
       <div className="C2user">
@@ -77,17 +80,16 @@ const ProductUser = () => {
               href={`https://johntekvalves.com/backend/storage/products/pdfs/${e.pdf}`}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handlePdfClick}
             >
-              {isLoading ? (
+              {/* {isLoading ? (
                 <span>Loading PDF...</span>
-              ) : (
+              ) : ( */}
                 <img
                   className="pdfuser"
                   src={require("../../Assets/images__3_-removebg-preview.png")}
                   alt="helooo i am not heer"
                 />
-              )}
+              {/* )} */}
             </a>
             {e.standard !== "no information" && (
                 <Stander standardData={e.standard} />
@@ -98,9 +100,9 @@ const ProductUser = () => {
 
         <p className="C3user" dir="ltr">
           <Link to="/contactUs" className="linuser">
-            Contact Us
+            {t("l1")}
           </Link>
-          to order & inquire about this product
+         {t("l2")}
         </p>
       </div>
     </div>
@@ -109,27 +111,3 @@ const ProductUser = () => {
 };
 
 export default ProductUser;
-
-//   // Search function
-//   const submitsearch = async (e) => {
-//     e.preventDefault();
-//     if (nameProduct === "") {
-//       setallprod(allprod);
-//       console.log("allproduct");
-//     } else {
-//     try {
-//       const res = await axios.get(
-//         `/searchProducts/${nameProduct}`
-//       );
-//       setShow(res.data);
-//       console.log(show); // التحقق من النتائج التي تم إرجاعها
-//       if (res.status === 200 ) {
-//         // التنقل إلى صفحة Products وتمرير نتائج البحث
-//         nav(`/Products`, { state: { results: res.data } });
-//       } else {
-//         alert("No products found with that name.");
-//       }
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
